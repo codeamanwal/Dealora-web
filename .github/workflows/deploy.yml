@@ -24,6 +24,13 @@ jobs:
       - name: Build Next.js (static export)
         run: npm run build
 
+      - name: Debug build output
+        run: |
+          echo "==== ROOT ===="
+          ls -la
+          echo "==== OUT ===="
+          ls -la out || echo "NO OUT FOLDER"
+
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
