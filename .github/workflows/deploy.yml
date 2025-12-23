@@ -24,7 +24,7 @@ jobs:
       - name: Build Next.js (static export)
         run: npm run build
 
-      - name: Deploy to Hostinger via SFTP
+      - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
           server: ${{ secrets.FTP_SERVER }}
@@ -32,5 +32,5 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
           local-dir: ./out/
-          server-dir: ${{ secrets.FTP_TARGET }}
+          server-dir: public_html/
           protocol: ftp
