@@ -119,7 +119,7 @@ export default function HomePage() {
             <h1 className="!mt-0 text-balance text-[clamp(2.6rem,4.5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.04em]">
               Unlock Rewards.
               <span className="-mt-2 block bg-brand-gradient bg-clip-text text-transparent">
-                CSave Smarter.
+                Save Smarter.
               </span>
             </h1>
 
