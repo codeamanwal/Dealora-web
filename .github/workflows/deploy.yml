@@ -22,7 +22,9 @@ jobs:
         run: npm ci
 
       - name: Build Next.js (static export)
-        run: npm run build
+        run: |
+          npm run build
+          npm run export
 
       - name: Deploy to Hostinger via SFTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
