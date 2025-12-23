@@ -34,3 +34,7 @@ jobs:
           local-dir: ./out/
           server-dir: public_html/
           protocol: ftp
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/_next/**/*
