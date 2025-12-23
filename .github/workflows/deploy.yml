@@ -37,3 +37,4 @@ jobs:
           exclude: |
             **/.git*
             **/.git*/**
+            **/_next/**/*
