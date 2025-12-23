@@ -24,13 +24,6 @@ jobs:
       - name: Build Next.js (static export)
         run: npm run build
 
-      - name: Debug build output
-        run: |
-          echo "==== ROOT ===="
-          ls -la
-          echo "==== OUT ===="
-          ls -la out || echo "NO OUT FOLDER"
-
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
@@ -38,7 +31,7 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           port: ${{ secrets.FTP_PORT }}
-          local-dir: ./out/
-          server-dir: ./
+          local-dir: out/
+          server-dir: public_html/
           protocol: ftp
-          dangerous-clean-slate: false
+          dangerous-clean-slate: true
