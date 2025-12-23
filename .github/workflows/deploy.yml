@@ -35,6 +35,6 @@ jobs:
           password: ${{ secrets.FTP_PASSWORD }}
           port: 21
           local-dir: out/
-          server-dir: ./
+          server-dir: domains/dealora.co.in/public_html/
           protocol: ftp
           dangerous-clean-slate: true
