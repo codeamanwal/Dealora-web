@@ -87,7 +87,7 @@ export default function ContactPage() {
                 autoComplete="email"
                 value={form.email}
                 onChange={onChange}
-                className="mt-1 w-full rounded-lg border border-slate-800 bg-slate-950 px-3 py-2 text-sm text-slate-50 outline-none ring-brand-accent/40 placeholder:text-slate-500 focus:border-brand-accent focus:ring-1"
+                className="mt-1 w-full rounded-lg border border-slate-800 bg-white px-3 py-2 text-sm text-slate-50 outline-none ring-brand-accent/40 placeholder:text-slate-500 focus:border-brand-accent focus:ring-1"
                 placeholder="you@example.com"
               />
             </div>

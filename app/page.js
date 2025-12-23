@@ -246,14 +246,14 @@ export default function HomePage() {
                       priority
                     />
 
-                    <div className="absolute right-[75px] top-4 z-10 text-black">
-                      <GiNetworkBars className="h-5 w-5" />
+                    <div className="absolute right-[40px] sm:right-[75px]  top-4 z-10 text-black">
+                      <GiNetworkBars className="h-3 w-3 sm:h-5 sm:w-5" />
                     </div>
-                    <div className="absolute right-[50px] top-4 z-10 text-black">
-                      <FaWifi  className="h-5 w-5" />
+                    <div className="absolute right-[25px] sm:right-[50px] top-4 z-10 text-black">
+                      <FaWifi  className="h-3 w-3 sm:h-5 sm:w-5" />
                     </div>
-                    <div className="absolute right-[17px] top-3 z-10 text-black">
-                      <IoIosBatteryFull  className="h-7 w-7" />
+                    <div className="absolute right-[7px] sm:right-[17px] top-3.5 sm:top-3 z-10 text-black">
+                      <IoIosBatteryFull  className="h-4 w-4 sm:h-7 sm:w-7" />
                     </div>
                     <div
                       aria-hidden
