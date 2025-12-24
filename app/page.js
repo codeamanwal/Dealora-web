@@ -181,7 +181,7 @@ export default function HomePage() {
             </div>
             
             <div className="mt-6 border-t border-slate-100 pt-6">
-              <p className="text-xs text-slate-500">
+              <p className="text-xs text-slate-500 w-64">
                 For business and partnership enquiries, visit the contact page.
               </p>
             </div>
@@ -194,8 +194,16 @@ export default function HomePage() {
             className="flex-1"
           >
             <motion.div
-              className="relative mx-auto flex h-[580px] w-full max-w-[400px] items-end justify-center sm:h-[800px] sm:max-w-[500px] md:ml-auto md:mr-0 md:justify-end -translate-x-[0.25rem] md:-translate-x-[6.25rem]"
-            >
+  className="relative mx-auto flex h-[550px] w-full items-end max-w-[460px]
+             sm:h-[700px] sm:max-w-[600px]
+             md:h-[720px] md:max-w-[620px]
+             lg:h-[920px] lg:max-w-[720px]
+             md:ml-auto md:mr-0 md:justify-end
+             translate-x-[3rem]
+             sm:translate-x-[7rem]
+             md:-translate-x-[4rem]
+             lg:-translate-x-[8rem]"
+>
               <div aria-hidden className="pointer-events-none absolute inset-0">
                 <div className="absolute -right-10 top-8 h-72 w-72 rounded-full bg-sky-200/60 blur-3xl" />
                 <div className="absolute right-20 top-40 h-80 w-80 rounded-full bg-violet-200/60 blur-3xl" />
@@ -222,8 +230,15 @@ export default function HomePage() {
                   className="absolute inset-0.5 translate-x-4 translate-y-0 rounded-[3.1rem] bg-[linear-gradient(135deg,_rgba(15,23,42,0.95),_rgba(124,58,237,0.40))] opacity-80"
                 />
                 <div
-                  className="relative h-[500px] w-[240px] rounded-[3.1rem] bg-slate-950 p-[9px] shadow-[0_44px_140px_rgba(2,6,23,0.38)] ring-1 ring-white/10 sm:h-[740px] sm:w-[370px] overflow-hidden"
-                >
+  className="relative h-[560px] w-[280px]
+             sm:h-[700px] sm:w-[320px]
+             md:h-[720px] md:w-[320px]
+             lg:h-[920px] lg:w-[440px]
+             rounded-[3.2rem]
+             bg-slate-950 p-[10px]
+             shadow-[0_60px_160px_rgba(2,6,23,0.45)]
+             ring-1 ring-white/10"
+>
                   {/* Right edge highlight */}
                   <div 
                     aria-hidden 
@@ -313,18 +328,16 @@ export default function HomePage() {
             What is <span className="bg-brand-gradient bg-clip-text text-transparent">Dealora</span>?
           </h2>
           <p className="mt-6 w-full max-w-3xl text-xl leading-relaxed text-slate-700 sm:text-2xl lg:text-2xl">
-            Dealora is a <span className="text-purple-600 font-medium">smart rewards layer</span> for your daily spending. It connects with
-            supported apps and services, pulls live coupons and cashback offers, and
-            surfaces them in one place so you can redeem in a tap.
+            A <span className="text-purple-600 font-medium">smart rewards layer</span> for everyday spending—connects your apps, pulls live coupons and cashback, and lets you redeem in a tap.
           </p>
-          <p className="mt-4 w-full max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg lg:text-xl">
+          {/* <p className="mt-4 w-full max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg lg:text-xl">
             No more juggling screenshots, copied codes, or searching through emails.
             Dealora keeps every relevant offer at your fingertips.
-          </p>
+          </p> */}
         </div>
   </motion.section>
 
-  <HowItWorks />
+  
      <motion.section
   id="features"
   initial="hidden"
@@ -477,6 +490,7 @@ export default function HomePage() {
     </div>
   </div>
 </motion.section>
+<HowItWorks />
       {/* <motion.section
         id="app-preview"
         initial="hidden"
@@ -583,24 +597,26 @@ function HowItWorks() {
   const [completedStep, setCompletedStep] = useState(-1)
   const [hoveredStep, setHoveredStep] = useState(null)
 
+  const START_DELAY = 800
+
   useEffect(() => {
     if (!isInView) return
 
     const timers = [
       // Step 1
-      setTimeout(() => setActiveStep(0), 400),
+      setTimeout(() => setActiveStep(0),START_DELAY + 400),
 
       // Connector 1 → 2
-      setTimeout(() => setCompletedStep(0), 900),
+      setTimeout(() => setCompletedStep(0),START_DELAY + 900),
 
       // Step 2
-      setTimeout(() => setActiveStep(1), 1400),
+      setTimeout(() => setActiveStep(1),START_DELAY + 1400),
 
       // Connector 2 → 3
-      setTimeout(() => setCompletedStep(1), 1900),
+      setTimeout(() => setCompletedStep(1),START_DELAY + 1900),
 
       // Step 3
-      setTimeout(() => setActiveStep(2), 2400),
+      setTimeout(() => setActiveStep(2),START_DELAY + 2400),
     ]
 
     return () => timers.forEach(clearTimeout)
