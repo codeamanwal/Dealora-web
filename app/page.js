@@ -356,9 +356,9 @@ export default function HomePage() {
   {/* header */}
   <div className="relative mb-16 max-w-3xl">
     <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-      Key features that{" "}
+      Key {" "}
       <span className="bg-brand-gradient bg-clip-text text-transparent">
-        reduce friction
+        Features
       </span>
     </h2>
     <p className="mt-4 text-base text-slate-600">
