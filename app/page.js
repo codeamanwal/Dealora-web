@@ -230,7 +230,7 @@ export default function HomePage() {
                   className="absolute inset-0.5 translate-x-4 translate-y-0 rounded-[3.1rem] bg-[linear-gradient(135deg,_rgba(15,23,42,0.95),_rgba(124,58,237,0.40))] opacity-80"
                 />
                 <div
-  className="relative h-[560px] w-[280px]
+  className="relative h-[550px] w-[240px]
              sm:h-[700px] sm:w-[320px]
              md:h-[720px] md:w-[320px]
              lg:h-[920px] lg:w-[440px]
