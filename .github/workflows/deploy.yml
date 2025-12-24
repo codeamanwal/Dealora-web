@@ -23,9 +23,6 @@ jobs:
 
       - name: Build Next.js (static export)
         run: npm run build
-        
-      - name: Verify out folder
-        run: ls -la out
 
       - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.4
@@ -37,4 +34,4 @@ jobs:
           local-dir: out/
           server-dir: domains/dealora.co.in/public_html/
           protocol: ftp
-          dangerous-clean-slate: true
+          dangerous-clean-slate: false
