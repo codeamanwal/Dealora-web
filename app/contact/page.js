@@ -39,7 +39,7 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 text-slate-900 overflow-hidden">
+    <div className="relative w-full min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 text-slate-900 overflow-hidden">
       {/* ambient blobs */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -top-24 -left-24 h-[520px] w-[520px] rounded-full bg-purple-300/25 blur-3xl" />
@@ -50,19 +50,19 @@ export default function ContactPage() {
       {/* top fade */}
       <div
         aria-hidden
-        className="pointer-events-none absolute top-0 left-0 right-0 h-28
+        className="pointer-events-none absolute top-0 left-0 right-0 h-0
                    bg-gradient-to-b from-slate-50/100 via-slate-50/70 to-transparent z-10"
       />
 
       {/* header */}
-      <section className="relative w-full px-4 py-12 sm:px-6 lg:px-12 sm:py-16 z-20">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-brand-accent">
+      <section className="relative w-full px-4 py-12 sm:px-6 lg:px-12 sm:py-12 z-20">
+        <p className="text-xs font-medium uppercase tracking-[0.3em] text-brand-accent">
           Contact
         </p>
-        <h1 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
+        <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900">
           Get in touch with the Dealora team.
         </h1>
-        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
+        <p className="mt-5 text-lg leading-relaxed text-slate-600">
           Use the form below for support, feedback, or partnership enquiries. We
           try to respond to relevant messages in a reasonable timeframe.
         </p>
@@ -76,7 +76,7 @@ export default function ContactPage() {
             className="space-y-4 rounded-2xl border border-slate-200 bg-white/95 backdrop-blur-sm p-6 shadow-sm"
           >
             <div>
-              <label htmlFor="name" className="block text-xs font-medium text-slate-800">
+              <label htmlFor="name" className="block text-sm font-medium text-slate-800">
                 Name
               </label>
               <input
@@ -93,7 +93,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <label htmlFor="email" className="block text-xs font-medium text-slate-800">
+              <label htmlFor="email" className="block text-sm font-medium text-slate-800">
                 Email
               </label>
               <input
@@ -110,7 +110,7 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <label htmlFor="message" className="block text-xs font-medium text-slate-800">
+              <label htmlFor="message" className="block text-sm font-medium text-slate-800">
                 Message
               </label>
               <textarea
@@ -125,7 +125,7 @@ export default function ContactPage() {
               />
             </div>
 
-            {error && <p className="text-xs text-red-400">{error}</p>}
+            {error && <p className="text-sm text-red-400">{error}</p>}
             {status === "submitted" && !error && (
               <p className="text-xs text-emerald-400">
                 Thank you. Your message has been received.
@@ -143,19 +143,19 @@ export default function ContactPage() {
 
           <div className="space-y-6 text-sm text-slate-600">
             <div>
-              <h2 className="text-sm font-semibold text-slate-900">Support</h2>
-              <p className="mt-2 text-xs text-slate-600">
+              <h2 className="text-md font-semibold text-slate-900">Support</h2>
+              <p className="mt-2 text-sm text-slate-600">
                 For general questions, feedback, or issues while redeeming coupons,
                 use the form or reach out via the support email below.
               </p>
-              <p className="mt-2 text-xs text-brand-accent">
+              <p className="mt-2 text-sm text-brand-accent">
                 support@dealora.app
               </p>
             </div>
 
             <div>
-              <h2 className="text-sm font-semibold text-slate-900">Partnerships</h2>
-              <p className="mt-2 text-xs text-slate-600">
+              <h2 className="text-md font-semibold text-slate-900">Partnerships</h2>
+              <p className="mt-2 text-sm text-slate-600">
                 If you represent a brand, aggregator, or platform that runs rewards
                 and would like to explore integrations, mention it in your message
                 and include relevant details.
@@ -163,8 +163,8 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <h2 className="text-sm font-semibold text-slate-900">Social</h2>
-              <p className="mt-2 text-xs text-slate-600">
+              <h2 className="text-md font-semibold text-slate-900">Social</h2>
+              <p className="mt-2 text-sm text-slate-600">
                 Social handles can be added here once they are live. This is where
                 users can see updates, product tips, and new partner announcements.
               </p>

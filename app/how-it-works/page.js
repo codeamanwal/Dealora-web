@@ -45,7 +45,7 @@ const steps = [
 
 export default function HowItWorksPage() {
   return (
-    <section className="relative w-full bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 py-24 text-slate-900 overflow-hidden">
+    <section className="relative w-full bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 py-12 text-slate-900 overflow-hidden">
       {/* background blobs */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -top-24 -left-24 h-[520px] w-[520px] rounded-full bg-purple-300/25 blur-3xl" />
@@ -56,7 +56,7 @@ export default function HowItWorksPage() {
       {/* soft top fade */}
       <div
         aria-hidden
-        className="pointer-events-none absolute top-0 left-0 right-0 h-32
+        className="pointer-events-none absolute top-0 left-0 right-0 h-0
                    bg-gradient-to-b from-slate-50/100 via-slate-50/70 to-transparent z-10"
       />
 
@@ -69,7 +69,7 @@ export default function HowItWorksPage() {
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-brand-accent">
             How it works
           </p>
-          <h2 className="mt-4 text-4xl font-semibold tracking-tight">
+          <h2 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900">
             A simple journey from sign-up to savings.
           </h2>
           <p className="mt-5 text-lg leading-relaxed text-slate-600">
@@ -150,7 +150,24 @@ export default function HowItWorksPage() {
                 </motion.div>
 
                 {/* indicator */}
-                <div className="absolute left-1/2 flex -translate-x-1/2 items-center justify-center">
+
+                <div className="absolute left-1/2  -translate-x-1/2 flex items-center justify-center">
+                <div className="relative flex items-center justify-center">
+                {/* GIF LEFT (even steps: 2,4,6...) */}
+  {!isLeft && (
+    <img
+      src={[
+        "/how-it-works-gifs/output-onlinegiftools1.gif",
+        "/how-it-works-gifs/output-onlinegiftools2.gif",
+        "/how-it-works-gifs/output-onlinegiftools3.gif",
+        "/how-it-works-gifs/output-onlinegiftools4.gif",
+        "/how-it-works-gifs/output-onlinegiftools5.gif",
+        "/how-it-works-gifs/output-onlinegiftools6.gif",
+      ][index]}
+      alt={`Step ${index + 1} demonstration`}
+      className="absolute right-full mr-40 h-10 w-10 mix-blend-darken"
+    />
+  )}
                   <motion.div className="relative flex items-center justify-center" aria-hidden>
                     <motion.div
                       className="absolute h-10 w-10 rounded-full bg-white shadow-[0_10px_30px_rgba(2,6,23,0.06)]"
@@ -170,6 +187,22 @@ export default function HowItWorksPage() {
                       {index + 1}
                     </motion.div>
                   </motion.div>
+                  {/* GIF RIGHT (odd steps: 1,3,5...) */}
+  {isLeft && (
+    <img
+      src={[
+        "/how-it-works-gifs/output-onlinegiftools1.gif",
+        "/how-it-works-gifs/output-onlinegiftools2.gif",
+        "/how-it-works-gifs/output-onlinegiftools3.gif",
+        "/how-it-works-gifs/output-onlinegiftools4.gif",
+        "/how-it-works-gifs/output-onlinegiftools5.gif",
+        "/how-it-works-gifs/output-onlinegiftools6.gif",
+      ][index]}
+      alt={`Step ${index + 1} demonstration`}
+      className="absolute left-full ml-40 h-10 w-10"
+    />
+  )}
+                </div>
                 </div>
               </motion.div>
             )
@@ -180,7 +213,7 @@ export default function HowItWorksPage() {
       {/* soft bottom fade */}
       <div
         aria-hidden
-        className="pointer-events-none absolute bottom-0 left-0 right-0 h-32
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-0
                    bg-gradient-to-t from-slate-50/100 via-slate-50/70 to-transparent z-10"
       />
     </section>

@@ -14,26 +14,28 @@ const fadeIn = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-purple-50/60 to-cyan-50/70 text-slate-900">
+    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 py-12 text-slate-900">
 
-      {/* HERO */}
-      <section className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-12">
-        {/* ambient blobs */}
-        <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute -top-20 -left-20 h-96 w-96 rounded-full bg-purple-300/25 blur-3xl" />
-          <div className="absolute top-10 -right-20 h-[420px] w-[420px] rounded-full bg-cyan-300/25 blur-3xl" />
-        </div>
+      {/* ambient blobs */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-32 -left-32 h-[520px] w-[520px] rounded-full bg-purple-300/25 blur-3xl" />
+        <div className="absolute top-24 -right-32 h-[520px] w-[520px] rounded-full bg-cyan-300/25 blur-3xl" />
+        <div className="absolute bottom-32 left-1/3 h-[420px] w-[420px] rounded-full bg-violet-300/20 blur-3xl" />
+      </div>
 
-        <div className="relative w-full">
+      <div className="relative z-10 space-y-20 px-4 sm:px-6 lg:px-12">
+
+        {/* HERO */}
+        <div className="mb-16 w-full max-w-full">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-brand-accent">
             About Dealora
           </p>
 
-          <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900">
             Built for users who never want to miss a reward again.
           </h1>
 
-          <p className="mt-6 text-lg leading-relaxed text-slate-700">
+          <p className="mt-5 text-lg leading-relaxed text-slate-600">
             Dealora exists to remove friction from how everyday users discover, redeem,
             and track rewards. Today, coupons live in multiple apps, SMS inboxes,
             screenshots, emails, and browser tabs. Important offers get buried or
@@ -41,18 +43,8 @@ export default function AboutPage() {
           </p>
         </div>
 
-        {/* bottom fade */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute bottom-0 left-0 right-0 h-28
-                     bg-gradient-to-t from-slate-50/100 via-slate-50/70 to-transparent"
-        />
-      </section>
-
-      {/* MISSION + WHY */}
-      <section className="relative px-4 py-8 sm:px-6 lg:px-12">
+        {/* MISSION + WHY */}
         <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
-
           <motion.div
             whileHover={{ y: -6 }}
             className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white/80 p-8 backdrop-blur shadow-[0_20px_60px_rgba(2,6,23,0.08)]"
@@ -87,12 +79,9 @@ export default function AboutPage() {
               </p>
             </div>
           </motion.div>
-
         </div>
-      </section>
 
-      {/* WHAT MAKES US DIFFERENT */}
-      <section className="relative px-4 py-24 sm:px-6 lg:px-12">
+        {/* WHAT MAKES US DIFFERENT */}
         <div className="mx-auto max-w-4xl">
           <h2 className="text-3xl font-semibold tracking-tight">
             What makes Dealora different
@@ -143,10 +132,8 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
 
-      {/* VISION */}
-      <section className="relative px-4 py-24 sm:px-6 lg:px-12">
+        {/* VISION */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -178,10 +165,8 @@ export default function AboutPage() {
             </div>
           </div>
         </motion.div>
-      </section>
 
-      {/* CTA */}
-      <section className="relative px-4 py-24 sm:px-6 lg:px-12">
+        {/* CTA */}
         <div className="mx-auto max-w-4xl text-center">
           <h2 className="text-3xl font-semibold tracking-tight">
             Ready to simplify your rewards?
@@ -206,8 +191,8 @@ export default function AboutPage() {
             </Link>
           </div>
         </div>
-      </section>
 
-    </div>
+      </div>
+    </section>
   )
 }

@@ -50,8 +50,8 @@ export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 text-slate-900">
-      <section className="relative px-4 py-24 sm:px-6 lg:px-12">
+    <div className="min-h-screen w-full bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 text-slate-900">
+      <section className="relative px-4 py-12 sm:px-6 lg:px-12">
         {/* Background blobs */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
           <div className="absolute -top-20 -left-20 h-96 w-96 rounded-full bg-purple-300/25 blur-3xl" />
@@ -64,11 +64,11 @@ export default function FAQPage() {
             FAQ
           </p>
 
-          <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+          <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-4xl">
             Frequently asked questions.
           </h1>
 
-          <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-700">
+          <p className="mt-5  text-lg leading-relaxed text-slate-600">
             Short, clear answers to the most common questions about Dealora. The experience
             may evolve as we add new partners and capabilities.
           </p>
@@ -86,7 +86,7 @@ export default function FAQPage() {
                   <button
                     type="button"
                     onClick={() => setOpenIndex(isOpen ? null : idx)}
-                    className="flex w-full items-center gap-4 px-6 py-5 text-left"
+                    className="flex w-full items-center gap-4 px-6 py-3.5 text-left"
                   >
                     <span className="w-10 text-sm font-semibold tabular-nums text-slate-400">
                       {String(idx + 1).padStart(2, "0")}
@@ -101,7 +101,7 @@ export default function FAQPage() {
                         isOpen ? "rotate-180" : ""
                       }`}
                     >
-                      <FiChevronDown className="h-4 w-4 text-white" />
+                      <FiChevronDown className="h-5 w-5 text-white" />
                     </span>
                   </button>
 
