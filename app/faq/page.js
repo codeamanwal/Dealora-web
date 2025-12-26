@@ -1,7 +1,7 @@
 "use client"
 
-import { useState } from 'react'
-import { FiChevronDown } from 'react-icons/fi'
+import { useState } from "react"
+import { FiChevronDown } from "react-icons/fi"
 
 const faqs = [
   {
@@ -50,52 +50,70 @@ export default function FAQPage() {
   const [openIndex, setOpenIndex] = useState(null)
 
   return (
-    <div className="bg-slate-50 text-slate-900">
-      <section className="w-full px-4 py-12 sm:px-6 lg:px-12 sm:py-16">
-        <p className="text-xs font-medium uppercase tracking-[0.2em] text-brand-accent">
-          FAQ
-        </p>
-        <h1 className="mt-3 text-2xl font-semibold tracking-tight sm:text-3xl">
-          Frequently asked questions.
-        </h1>
-        <p className="mt-4 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
-          Short, clear answers to the most common questions about Dealora. The
-          exact experience may evolve as we add new partners and capabilities.
-        </p>
-      </section>
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 text-slate-900">
+      <section className="relative px-4 py-24 sm:px-6 lg:px-12">
+        {/* Background blobs */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-20 -left-20 h-96 w-96 rounded-full bg-purple-300/25 blur-3xl" />
+          <div className="absolute top-20 -right-20 h-[420px] w-[420px] rounded-full bg-cyan-300/25 blur-3xl" />
+        </div>
 
-      <section className="w-full px-4 pb-16 sm:px-6 lg:px-12 sm:pb-20">
-        <div className="divide-y divide-slate-200 rounded-2xl border border-slate-200 bg-white shadow-sm">
-          {faqs.map((item, idx) => {
-            const isOpen = openIndex === idx
-            return (
-              <div key={item.question} className="px-5 py-4 sm:px-6 sm:py-5">
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : idx)}
-                  aria-expanded={isOpen}
-                  className="grid w-full grid-cols-[auto_1fr_auto] items-center gap-4"
+        <div className="relative mx-auto w-full">
+          {/* Header */}
+          <p className="text-xs font-medium uppercase tracking-[0.3em] text-brand-accent">
+            FAQ
+          </p>
+
+          <h1 className="mt-4 text-3xl font-semibold tracking-tight sm:text-4xl">
+            Frequently asked questions.
+          </h1>
+
+          <p className="mt-6 max-w-2xl text-base leading-relaxed text-slate-700">
+            Short, clear answers to the most common questions about Dealora. The experience
+            may evolve as we add new partners and capabilities.
+          </p>
+
+          {/* FAQ list */}
+          <div className="mt-14 space-y-4">
+            {faqs.map((item, idx) => {
+              const isOpen = openIndex === idx
+
+              return (
+                <div
+                  key={item.question}
+                  className="rounded-2xl border border-slate-200 bg-white/85 backdrop-blur shadow-[0_18px_50px_rgba(2,6,23,0.08)]"
                 >
-                  <span className="w-8 text-left text-sm font-semibold tabular-nums text-slate-400">
-                    {String(idx + 1).padStart(2, '0')}
-                  </span>
-                  <span className="text-center text-xl font-semibold text-slate-900">
-                    {item.question}
-                  </span>
-                  <FiChevronDown
-                    className={`ml-4 h-5 w-5 text-slate-500 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-brand-accent' : ''
-                    }`}
-                    aria-hidden
-                  />
-                </button>
+                  <button
+                    type="button"
+                    onClick={() => setOpenIndex(isOpen ? null : idx)}
+                    className="flex w-full items-center gap-4 px-6 py-5 text-left"
+                  >
+                    <span className="w-10 text-sm font-semibold tabular-nums text-slate-400">
+                      {String(idx + 1).padStart(2, "0")}
+                    </span>
 
-                <div className={`mt-2 text-lg leading-relaxed text-slate-600 ${isOpen ? 'block' : 'hidden'}`}>
-                  {item.answer}
+                    <span className="flex-1 text-lg font-semibold text-slate-900">
+                      {item.question}
+                    </span>
+
+                    <span
+                      className={`flex h-9 w-9 items-center justify-center rounded-full bg-slate-900 transition-transform duration-300 ${
+                        isOpen ? "rotate-180" : ""
+                      }`}
+                    >
+                      <FiChevronDown className="h-4 w-4 text-white" />
+                    </span>
+                  </button>
+
+                  {isOpen && (
+                    <div className="px-16 pb-6 pr-6 text-base leading-relaxed text-slate-700">
+                      {item.answer}
+                    </div>
+                  )}
                 </div>
-              </div>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
       </section>
     </div>

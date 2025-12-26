@@ -95,14 +95,14 @@ export default function HomePage() {
   }
 
   return (
-    <div className="bg-slate-50 text-slate-900">
+    <div className="bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 text-slate-900">
       <motion.section
         initial="hidden"
         animate="visible"
         variants={heroVariants}
-        className="relative isolate overflow-hidden border-b border-slate-200 bg-white"
+        className="relative isolate overflow-hidden bg-gradient-to-b from-slate-50 via-purple-50/60 to-cyan-50/70"
       >
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-slate-100" />
+        {/* <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-slate-100" /> */}
         <motion.div
           aria-hidden
           style={{ y: heroOrbY }}
@@ -113,8 +113,8 @@ export default function HomePage() {
           style={{ y: heroOrbY2 }}
           className="pointer-events-none absolute -right-32 top-[120px] h-[560px] w-[560px] rounded-full bg-[radial-gradient(circle_at_center,_rgba(124,58,237,0.18),_transparent_62%)] blur-2xl"
         />
-  <div className="relative flex w-full flex-col gap-8 px-4 pb-12 sm:px-6 lg:px-12 md:flex-row md:items-center md:pb-20 md:-pt-0">
-          <div className="flex-1 space-y-6">
+  <div className="relative flex w-full flex-col gap-8 px-4 pb-12 sm:px-6 lg:px-20 md:flex-row md:items-start md:pb-20 md:pt-40">
+           <div className="flex-1 space-y-7">
 
             <h1 className="!mt-0 text-balance text-[clamp(2.6rem,4.5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.04em]">
               Unlock Rewards.
@@ -123,11 +123,11 @@ export default function HomePage() {
               </span>
             </h1>
 
-            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-xs text-slate-700 shadow-sm backdrop-blur">
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200/70 bg-white/70 px-3 py-1 text-base text-slate-700 shadow-sm backdrop-blur">
               {/* animated attention dot: pulsing center + expanding ping ring */}
               <span className="relative inline-flex h-3 w-3 items-center justify-center">
                 <span className="absolute inline-flex h-full w-full rounded-full bg-brand-accent/30 animate-ping" aria-hidden />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-brand-accent shadow-[0_0_8px_rgba(34,211,238,0.28)] animate-pulse" aria-hidden />
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-brand-accent shadow-[0_0_8px_rgba(34,211,238,0.28)] animate-pulse" aria-hidden />
               </span>
               <span>Smart rewards hub for modern shoppers</span>
             </div>
@@ -137,51 +137,51 @@ export default function HomePage() {
               deal without the usual friction.
             </p> */}
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-5">
               <Link
                 href="#"
                 aria-label="Download on Google Play"
-                className="inline-flex items-center justify-center h-12 w-36 rounded-full bg-brand-gradient border border-slate-200 shadow-sm hover:shadow-md"
+                // className=" items-center justify-center   shadow-sm hover:shadow-md"
               >
-                <Image src="/googleplaystorelogo.png" alt="Google Play" width={88} height={24} className="object-contain" />
+                <Image src="/GetItOnGooglePlay_Badge_Web_color_English.svg" alt="Google Play" width={175} height={40} className="object-contain" />
               </Link>
               <Link
                 href="#"
                 aria-label="Download on the App Store"
-                className="inline-flex items-center justify-center h-12 w-36 rounded-full bg-white border border-slate-200 shadow-sm hover:shadow-md"
+                // className="inline-flex items-center justify-center h-12 w-36 rounded-full bg-white border border-slate-200 shadow-sm hover:shadow-md"
               >
                 
-                <Image src="/App_Store.svg" alt="App Store" width={38} height={24} className="object-contain" />
+                <Image src="/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg" alt="App Store" width={175} height={40} className="object-contain" />
               </Link>
             </div>
 
             <div className="mt-6 w-64 space-y-3 mr-auto">
-              <p className="text-sm font-medium text-center text-slate-700">Sign in to access your rewards</p>
+              <p className="text-lg font-medium text-center text-slate-700 pb-5">Sign in to access your rewards</p>
               <button
                 onClick={() => {/* Handle Google sign in */}}
-                className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-50"
+                className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-md font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-50"
               >
-                <FcGoogle className="h-5 w-5" />
+                <FcGoogle className="h-7 w-7" />
                 Continue with Google
               </button>
               <div className="relative flex items-center py-1">
                 <div className="flex-grow border-t border-slate-200"></div>
-                <span className="mx-3 flex-shrink text-sm text-slate-500">or</span>
+                {/* <span className="mx-3 flex-shrink text-sm text-slate-500">or</span> */}
                 <div className="flex-grow border-t border-slate-200"></div>
               </div>
               <button
                 onClick={() => {/* Handle email sign in */}}
-                className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-50"
+                className="flex w-full items-center justify-center gap-2 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-md font-medium text-slate-700 shadow-sm transition-colors hover:bg-slate-50"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
                 Continue with Email
               </button>
             </div>
             
-            <div className="mt-6 border-t border-slate-100 pt-6">
-              <p className="text-xs text-slate-500 w-64">
+            <div className="mt-6">
+              <p className="text-sm text-slate-500 w-64 xl:w-full">
                 For business and partnership enquiries, visit the contact page.
               </p>
             </div>
@@ -197,19 +197,27 @@ export default function HomePage() {
   className="relative mx-auto flex h-[550px] w-full items-end max-w-[460px]
              sm:h-[700px] sm:max-w-[600px]
              md:h-[720px] md:max-w-[620px]
-             lg:h-[920px] lg:max-w-[720px]
+             lg:h-[820px] lg:max-w-[720px]
+             xl:h-[820px] xl:max-w-[720px]
              md:ml-auto md:mr-0 md:justify-end
              translate-x-[3rem]
              sm:translate-x-[7rem]
              md:-translate-x-[4rem]
-             lg:-translate-x-[8rem]"
+             lg:-translate-x-[4rem]
+             xl:-translate-x-[10rem]"
 >
               <div aria-hidden className="pointer-events-none absolute inset-0">
                 <div className="absolute -right-10 top-8 h-72 w-72 rounded-full bg-sky-200/60 blur-3xl" />
                 <div className="absolute right-20 top-40 h-80 w-80 rounded-full bg-violet-200/60 blur-3xl" />
                 <div className="absolute left-8 bottom-10 h-64 w-64 rounded-full bg-amber-200/55 blur-3xl" />
-                <div className="absolute bottom-10 right-0 h-40 w-[360px] rotate-[-10deg] rounded-full bg-slate-900/10 blur-2xl" />
+                <div className="absolute bottom-10 right-0 h-40 w-[360px] rotate-[-10deg] rounded-full bg-slate-900/6 blur-2xl" />
               </div>
+              <div
+  aria-hidden
+  className="pointer-events-none absolute bottom-0 left-0 right-0 h-40
+             bg-gradient-to-t from-slate-50/100 via-slate-50/70 to-transparent
+             z-10"
+/>
               <div
                 aria-hidden
                 className="pointer-events-none absolute inset-0 z-0 flex items-center justify-center"
@@ -234,9 +242,10 @@ export default function HomePage() {
              sm:h-[700px] sm:w-[320px]
              md:h-[720px] md:w-[320px]
              lg:h-[920px] lg:w-[440px]
+             xl:h-[970px] xl:w-[490px]
              rounded-[3.2rem]
              bg-slate-950 p-[10px]
-             shadow-[0_60px_160px_rgba(2,6,23,0.45)]
+             shadow-[0_30px_90px_rgba(2,6,23,0.22)]
              ring-1 ring-white/10"
 >
                   {/* Right edge highlight */}
@@ -305,6 +314,12 @@ export default function HomePage() {
             </motion.div>
           </motion.div>
         </div>
+        <div
+  aria-hidden
+  className="pointer-events-none absolute bottom-0 left-0 right-0 h-28
+             bg-gradient-to-t from-slate-50/100 via-slate-50/70 to-transparent
+            z-20"
+/>
       </motion.section>
 
       <motion.section
@@ -312,14 +327,20 @@ export default function HomePage() {
         initial="hidden"
         animate="visible"
         variants={sectionVariants}
-        className="relative w-full overflow-hidden bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 px-4 py-20 sm:px-6 lg:px-12 sm:py-28"
+        className="relative w-full bg-gradient-to-b from-slate-50 via-purple-50/60 to-cyan-50/70 px-4 py-20 sm:px-6 lg:px-12 sm:py-28"
       >
+        {/* <div
+  aria-hidden
+  className="pointer-events-none absolute top-0 left-0 right-0 h-32
+             bg-gradient-to-b from-slate-50/100 via-slate-50/70 to-transparent
+             z-20"
+/> */}
         {/* Decorative color patches */}
         <div aria-hidden className="pointer-events-none absolute inset-0">
-          <div className="absolute top-10 left-10 h-64 w-64 rounded-full bg-purple-300/40 blur-3xl" />
-          <div className="absolute top-20 right-20 h-80 w-80 rounded-full bg-cyan-300/40 blur-3xl" />
-          <div className="absolute bottom-10 left-1/4 h-72 w-72 rounded-full bg-violet-300/35 blur-3xl" />
-          <div className="absolute bottom-20 right-1/3 h-96 w-96 rounded-full bg-sky-300/35 blur-3xl" />
+          <div className="absolute top-10 left-10 h-64 w-64 rounded-full bg-purple-300/25 blur-3xl" />
+          <div className="absolute top-20 right-20 h-80 w-80 rounded-full bg-cyan-300/25 blur-3xl" />
+          <div className="absolute bottom-32 left-1/4 h-72 w-72 rounded-full bg-violet-300/25 blur-3xl" />
+          <div className="absolute bottom-20 right-1/3 h-96 w-96 rounded-full bg-sky-300/25 blur-3xl" />
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-purple-200/30 via-cyan-200/30 to-violet-200/30 blur-3xl" />
         </div>
         
@@ -328,40 +349,54 @@ export default function HomePage() {
             What is <span className="bg-brand-gradient bg-clip-text text-transparent">Dealora</span>?
           </h2>
           <p className="mt-6 w-full max-w-3xl text-xl leading-relaxed text-slate-700 sm:text-2xl lg:text-2xl">
-            A <span className="text-purple-600 font-medium">smart rewards layer</span> for everyday spending—connects your apps, pulls live coupons and cashback, and lets you redeem in a tap.
+            A <span className="text-purple-600 font-medium">smart rewards layer</span> for everyday spending—connects your apps, pulls live coupons, tracks cashback, and lets you redeem coupons in a tap.
           </p>
           {/* <p className="mt-4 w-full max-w-3xl text-base leading-relaxed text-slate-600 sm:text-lg lg:text-xl">
             No more juggling screenshots, copied codes, or searching through emails.
             Dealora keeps every relevant offer at your fingertips.
           </p> */}
         </div>
+        <div
+  aria-hidden
+  className="pointer-events-none absolute bottom-0 left-0 right-0 h-20
+             bg-gradient-to-t from-slate-50/100 via-slate-50/70 to-transparent
+             z-20"
+/>
   </motion.section>
 
   
      <motion.section
   id="features"
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.25 }}
+  initial="visible"
+  animate="visible"
   variants={sectionVariants}
-  className="relative w-full bg-gradient-to-br from-slate-50 via-purple-50/40 to-cyan-50/50 px-4 py-20 sm:px-6 lg:px-12 sm:py-28"
+  className="relative w-full overflow-hidden bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 px-4 py-20 sm:px-6 lg:px-12 sm:py-4"
 >
+  <div
+  aria-hidden
+  className="pointer-events-none absolute top-0 left-0 right-0 h-20
+             bg-gradient-to-b from-slate-50/100 via-slate-50/70 to-transparent
+             z-20"
+/>
   {/* ambient background blobs */}
   <div aria-hidden className="pointer-events-none absolute inset-0">
-    <div className="absolute top-16 left-12 h-72 w-72 rounded-full bg-purple-300/30 blur-3xl" />
-    <div className="absolute top-24 right-16 h-96 w-96 rounded-full bg-cyan-300/30 blur-3xl" />
-    <div className="absolute bottom-16 left-1/3 h-80 w-80 rounded-full bg-violet-300/25 blur-3xl" />
+    <div className="absolute top-16 left-12 h-72 w-72 rounded-full bg-purple-300/25 blur-3xl" />
+    <div className="absolute top-24 right-16 h-96 w-96 rounded-full bg-cyan-300/25 blur-3xl" />
+    <div className="absolute bottom-16 left-1/3 h-80 w-80 rounded-full bg-violet-300/20 blur-3xl" />
   </div>
 
   {/* header */}
-  <div className="relative mb-16 max-w-3xl">
-    <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
+ 
+  <div className="relative flex w-full flex-col items-center text-center py-20">
+    
+    <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl">
       Key {" "}
       <span className="bg-brand-gradient bg-clip-text text-transparent">
         Features
-      </span>
+      </span> {" "}
+      that enable savings
     </h2>
-    <p className="mt-4 text-base text-slate-600">
+    <p className="mt-6 w-full max-w-3xl text-xl leading-relaxed text-slate-700 sm:text-2xl lg:text-2xl">
       Everything in Dealora is designed to stay out of your way and quietly help you
       save more every day.
     </p>
@@ -387,15 +422,15 @@ export default function HomePage() {
         },
         {
           title: "Secure sign-in",
-          text: "Privacy-first authentication with modern security best practices.",
+          text: "Privacy-first authentication with modern security best practices.\n\n",
           gradient: "from-emerald-500 to-teal-600",
           rotate: 5,
           imageSrc: "/secure sign in.jpg"
         },
         {
           title: "Cashback tracking",
-          text: "Track earned, pending, and confirmed cashback across sources.",
-          gradient: "from-amber-500 to-orange-600",
+          text: "Track earned, pending, and confirmed cashback across sources.\n\n",
+          gradient: "from-cyan-500 to-cyan-600",
           rotate: -5,
           imageSrc: "/cashback tracking.jpg"
         },
@@ -463,7 +498,7 @@ export default function HomePage() {
               </h3>
 
               
-                <p className="mt-4 text-base leading-relaxed text-slate-600 mb-8 whitespace-pre-wrap">
+                <p className="mt-4 text-base leading-relaxed text-slate-600 mb-8 whitespace-pre-line">
                   {item.text}
                 </p>
               
@@ -489,6 +524,12 @@ export default function HomePage() {
       ))}
     </div>
   </div>
+  <div
+  aria-hidden
+  className="pointer-events-none absolute bottom-0 left-0 right-0 h-32
+             bg-gradient-to-t from-slate-50/100 via-slate-50/70 to-transparent
+             z-20"
+/>
 </motion.section>
 <HowItWorks />
       {/* <motion.section
@@ -541,13 +582,19 @@ export default function HomePage() {
       </motion.section> */}
 
       <motion.section
-        id="download"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        variants={sectionVariants}
-        className="w-full px-4 py-16 sm:px-6 lg:px-12 sm:py-20"
-      >
+  id="download"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true, amount: 0.3 }}
+  variants={sectionVariants}
+  className="relative w-full bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 px-4 py-16 sm:px-6 lg:px-12 sm:py-20"
+>
+  <div
+  aria-hidden
+  className="pointer-events-none absolute top-0 left-0 right-0 h-24
+             bg-gradient-to-b from-slate-50/100 via-slate-50/70 to-transparent
+             z-10"
+/>
         <div className="relative overflow-hidden rounded-[2.4rem] border border-slate-200 bg-white px-6 py-10 shadow-[0_26px_90px_rgba(2,6,23,0.10)] sm:px-10">
           <div aria-hidden className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_10%,_rgba(124,58,237,0.20),_transparent_55%),_radial-gradient(circle_at_85%_70%,_rgba(34,211,238,0.18),_transparent_60%)]" />
           <div className="pointer-events-none absolute inset-0 bg-gradient-to-r from-white/60 via-white/20 to-white/50" />
@@ -565,16 +612,16 @@ export default function HomePage() {
               <Link
                 href="#"
                 aria-label="Download on Google Play"
-                className="inline-flex items-center justify-center h-12 w-36 rounded-full bg-brand-gradient border border-slate-200 shadow-sm hover:shadow-md"
+                // className="inline-flex items-center justify-center h-12 w-36 rounded-full bg-brand-gradient border border-slate-200 shadow-sm hover:shadow-md"
               >
-                <Image src="/googleplaystorelogo.png" alt="Google Play" width={88} height={24} className="object-contain" />
+                <Image src="/GetItOnGooglePlay_Badge_Web_color_English.svg" alt="Google Play" width={175} height={40} className="object-contain" />
               </Link>
               <Link
                 href="#"
                 aria-label="Download on the App Store"
-                className="inline-flex items-center justify-center h-12 w-36 rounded-full bg-white border border-slate-200 shadow-sm hover:shadow-md"
+                // className="inline-flex items-center justify-center h-12 w-36 rounded-full bg-white border border-slate-200 shadow-sm hover:shadow-md"
               >
-                <Image src="/App_Store.svg" alt="App Store" width={38} height={24} className="object-contain" />
+                <Image src="/Download_on_the_App_Store_Badge_US-UK_RGB_wht_092917.svg" alt="App Store" width={175} height={40} className="object-contain" />
               </Link>
               <Link
                 href="/contact"
@@ -641,7 +688,7 @@ function HowItWorks() {
       icon: "💰",
       title: "Track savings",
       description:
-        "Saved coupons, used offers, and cashback earnings are tracked in-app so you always know how much you have saved.",
+        "Track in-app saved coupons, used offers, and cashback earnings, so you always know how much you have saved.",
       color: "from-emerald-500 to-teal-600",
     },
   ]
@@ -649,14 +696,21 @@ function HowItWorks() {
   return (
     <section
       ref={ref}
-      className="relative overflow-hidden border-y border-slate-200 bg-gradient-to-br from-slate-50 via-purple-50/40 to-cyan-50/50 px-4 py-20 sm:px-6 lg:px-12 sm:py-28"
+      className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 px-4 py-20 sm:px-6 lg:px-12 sm:py-28"
     >
+      <div
+    aria-hidden
+    className="pointer-events-none absolute top-0 left-0 right-0 h-28
+               bg-gradient-to-b from-slate-50/100 via-slate-50/70 to-transparent
+               z-10"
+  />
+  
       {/* Background blobs */}
-      <div aria-hidden className="pointer-events-none absolute inset-0">
-        <div className="absolute top-20 left-10 h-96 w-96 rounded-full bg-purple-300/30 blur-3xl" />
-        <div className="absolute top-10 right-20 h-80 w-80 rounded-full bg-cyan-300/30 blur-3xl" />
-        <div className="absolute bottom-20 left-1/3 h-72 w-72 rounded-full bg-violet-300/25 blur-3xl" />
-        <div className="absolute bottom-10 right-1/4 h-96 w-96 rounded-full bg-emerald-300/25 blur-3xl" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 z-0">
+        <div className="absolute top-16 left-10 h-96 w-96 rounded-full bg-purple-300/25 blur-3xl" />
+    <div className="absolute top-40 right-20 h-80 w-80 rounded-full bg-cyan-300/25 blur-3xl" />
+    <div className="absolute bottom-20 left-1/3 h-72 w-72 rounded-full bg-violet-300/20 blur-3xl" />
+    <div className="absolute bottom-10 right-1/4 h-96 w-96 rounded-full bg-emerald-300/20 blur-3xl" />
       </div>
 
       <div className="relative text-center mb-16">
@@ -677,7 +731,7 @@ function HowItWorks() {
           {[0, 1].map((i) => (
             <div
               key={i}
-              className="relative w-1/2 h-1 rounded-full bg-slate-300 overflow-hidden"
+              className="relative w-1/2 h-1 rounded-full bg-slate-300/60 overflow-hidden"
             >
               <motion.div
                 className="absolute left-0 top-0 h-full rounded-full bg-[rgba(124,58,237,0.9)]"
@@ -736,6 +790,12 @@ function HowItWorks() {
           )
         })}
       </div>
+      <div
+  aria-hidden
+  className="pointer-events-none absolute bottom-0 left-0 right-0 h-32
+             bg-gradient-to-t from-slate-50/100 via-slate-50/70 to-transparent
+             z-10"
+/>
     </section>
   )
 }

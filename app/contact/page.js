@@ -39,8 +39,23 @@ export default function ContactPage() {
   }
 
   return (
-    <div className="bg-slate-50 text-slate-900">
-      <section className="w-full px-4 py-12 sm:px-6 lg:px-12 sm:py-16">
+    <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 text-slate-900 overflow-hidden">
+      {/* ambient blobs */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-24 -left-24 h-[520px] w-[520px] rounded-full bg-purple-300/25 blur-3xl" />
+        <div className="absolute top-40 -right-24 h-[520px] w-[520px] rounded-full bg-cyan-300/25 blur-3xl" />
+        <div className="absolute bottom-24 left-1/3 h-[420px] w-[420px] rounded-full bg-violet-300/20 blur-3xl" />
+      </div>
+
+      {/* top fade */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-0 left-0 right-0 h-28
+                   bg-gradient-to-b from-slate-50/100 via-slate-50/70 to-transparent z-10"
+      />
+
+      {/* header */}
+      <section className="relative w-full px-4 py-12 sm:px-6 lg:px-12 sm:py-16 z-20">
         <p className="text-xs font-medium uppercase tracking-[0.2em] text-brand-accent">
           Contact
         </p>
@@ -53,11 +68,12 @@ export default function ContactPage() {
         </p>
       </section>
 
-      <section className="w-full px-4 pb-16 sm:px-6 lg:px-12 sm:pb-20">
+      {/* content */}
+      <section className="relative w-full px-4 pb-16 sm:px-6 lg:px-12 sm:pb-20 z-20">
         <div className="grid gap-8 md:grid-cols-[minmax(0,_1.2fr)_minmax(0,_0.9fr)]">
           <form
             onSubmit={handleSubmit}
-            className="space-y-4 rounded-2xl border border-slate-200 bg-white p-6 shadow-sm"
+            className="space-y-4 rounded-2xl border border-slate-200 bg-white/95 backdrop-blur-sm p-6 shadow-sm"
           >
             <div>
               <label htmlFor="name" className="block text-xs font-medium text-slate-800">
@@ -75,6 +91,7 @@ export default function ContactPage() {
                 placeholder="Your name"
               />
             </div>
+
             <div>
               <label htmlFor="email" className="block text-xs font-medium text-slate-800">
                 Email
@@ -87,10 +104,11 @@ export default function ContactPage() {
                 autoComplete="email"
                 value={form.email}
                 onChange={onChange}
-                className="mt-1 w-full rounded-lg border border-slate-800 bg-white px-3 py-2 text-sm text-slate-50 outline-none ring-brand-accent/40 placeholder:text-slate-500 focus:border-brand-accent focus:ring-1"
+                className="mt-1 w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm text-slate-900 outline-none ring-brand-accent/40 placeholder:text-slate-500 focus:border-brand-accent focus:ring-1"
                 placeholder="you@example.com"
               />
             </div>
+
             <div>
               <label htmlFor="message" className="block text-xs font-medium text-slate-800">
                 Message
@@ -106,18 +124,18 @@ export default function ContactPage() {
                 placeholder="How can we help?"
               />
             </div>
-            {error && (
-              <p className="text-xs text-red-400">{error}</p>
-            )}
+
+            {error && <p className="text-xs text-red-400">{error}</p>}
             {status === "submitted" && !error && (
               <p className="text-xs text-emerald-400">
                 Thank you. Your message has been received.
               </p>
             )}
+
             <button
               type="submit"
               disabled={status === "submitting"}
-              className="mt-1 inline-flex items-center justify-center rounded-full bg-brand-gradient px-5 py-2 text-sm font-medium text-slate-950 shadow-soft-glow hover:brightness-110 disabled:opacity-60"
+              className="mt-1 inline-flex items-center justify-center rounded-full bg-brand-gradient px-5 py-2 text-sm font-medium text-white shadow-soft-glow hover:brightness-110 disabled:opacity-60"
             >
               {status === "submitting" ? "Sending..." : "Send message"}
             </button>
@@ -134,6 +152,7 @@ export default function ContactPage() {
                 support@dealora.app
               </p>
             </div>
+
             <div>
               <h2 className="text-sm font-semibold text-slate-900">Partnerships</h2>
               <p className="mt-2 text-xs text-slate-600">
@@ -142,6 +161,7 @@ export default function ContactPage() {
                 and include relevant details.
               </p>
             </div>
+
             <div>
               <h2 className="text-sm font-semibold text-slate-900">Social</h2>
               <p className="mt-2 text-xs text-slate-600">
@@ -152,6 +172,13 @@ export default function ContactPage() {
           </div>
         </div>
       </section>
+
+      {/* bottom fade */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-28
+                   bg-gradient-to-t from-slate-50/100 via-slate-50/70 to-transparent z-10"
+      />
     </div>
   )
 }

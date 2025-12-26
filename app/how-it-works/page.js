@@ -1,7 +1,14 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { FiMail, FiLink, FiLayers, FiShoppingCart, FiCheckCircle, FiSave } from 'react-icons/fi'
+import {
+  FiMail,
+  FiLink,
+  FiLayers,
+  FiShoppingCart,
+  FiCheckCircle,
+  FiSave,
+} from "react-icons/fi"
 
 const steps = [
   {
@@ -38,16 +45,27 @@ const steps = [
 
 export default function HowItWorksPage() {
   return (
-    <section className="relative w-full bg-slate-50 py-20 text-slate-900">
-      {/* subtle background */}
-      <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-slate-100" />
+    <section className="relative w-full bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 py-24 text-slate-900 overflow-hidden">
+      {/* background blobs */}
+      <div aria-hidden className="pointer-events-none absolute inset-0">
+        <div className="absolute -top-24 -left-24 h-[520px] w-[520px] rounded-full bg-purple-300/25 blur-3xl" />
+        <div className="absolute top-40 -right-24 h-[520px] w-[520px] rounded-full bg-cyan-300/25 blur-3xl" />
+        <div className="absolute bottom-20 left-1/3 h-[420px] w-[420px] rounded-full bg-violet-300/20 blur-3xl" />
+      </div>
+
+      {/* soft top fade */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute top-0 left-0 right-0 h-32
+                   bg-gradient-to-b from-slate-50/100 via-slate-50/70 to-transparent z-10"
+      />
 
       {/* center spine */}
       <div className="absolute left-1/2 top-0 h-full w-px -translate-x-1/2 bg-gradient-to-b from-transparent via-brand-accent/40 to-transparent" />
 
       <div className="relative w-full px-4 sm:px-6 lg:px-12">
         {/* header */}
-        <div className="mb-16 w-full">
+        <div className="mb-16 w-full max-w-full">
           <p className="text-xs font-medium uppercase tracking-[0.3em] text-brand-accent">
             How it works
           </p>
@@ -74,16 +92,26 @@ export default function HowItWorksPage() {
         >
           {steps.map((step, index) => {
             const isLeft = index % 2 === 0
-            const icons = [FiMail, FiLink, FiLayers, FiShoppingCart, FiCheckCircle, FiSave]
+            const icons = [
+              FiMail,
+              FiLink,
+              FiLayers,
+              FiShoppingCart,
+              FiCheckCircle,
+              FiSave,
+            ]
             const Icon = icons[index % icons.length]
-            
 
             return (
               <motion.div
                 key={step.title}
                 variants={{
                   hidden: { opacity: 0, y: 20 },
-                  show: { opacity: 1, y: 0, transition: { duration: 0.44, ease: 'easeOut' } },
+                  show: {
+                    opacity: 1,
+                    y: 0,
+                    transition: { duration: 0.44, ease: "easeOut" },
+                  },
                 }}
                 className="relative grid grid-cols-2 items-start"
               >
@@ -94,16 +122,22 @@ export default function HowItWorksPage() {
                   aria-labelledby={`step-${index}-title`}
                   whileHover={{ scale: 1.01 }}
                   whileFocus={{ scale: 1.01 }}
-                  transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className={`rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/30 ${
-                    isLeft ? 'pr-16 text-right' : 'col-start-2 pl-16 text-left'
+                    isLeft ? "pr-16 text-right" : "col-start-2 pl-16 text-left"
                   }`}
                 >
                   <div className="flex items-start justify-between md:justify-end lg:justify-between">
                     <div className="min-w-0">
-                      <h3 id={`step-${index}-title`} className="text-lg font-semibold text-slate-900 inline-flex items-center gap-3">
+                      <h3
+                        id={`step-${index}-title`}
+                        className="text-lg font-semibold text-slate-900 inline-flex items-center gap-3"
+                      >
                         <span className="hidden sm:inline-flex">
-                          <Icon className="text-brand-accent h-5 w-5" aria-hidden />
+                          <Icon
+                            className="h-5 w-5 text-brand-accent"
+                            aria-hidden
+                          />
                         </span>
                         {step.title}
                       </h3>
@@ -111,24 +145,21 @@ export default function HowItWorksPage() {
                       <p className="mt-3 text-sm leading-relaxed text-slate-600">
                         {step.description}
                       </p>
-
-                      {/* removed quick action to keep only the icon in the title */}
                     </div>
                   </div>
                 </motion.div>
 
                 {/* indicator */}
                 <div className="absolute left-1/2 flex -translate-x-1/2 items-center justify-center">
-                  <motion.div
-                    className="relative flex items-center justify-center"
-                    aria-hidden
-                  >
-                    {/* subtle pulsing ring */}
+                  <motion.div className="relative flex items-center justify-center" aria-hidden>
                     <motion.div
-                      className="absolute h-10 w-10 rounded-full bg-white shadow-[0_6px_20px_rgba(99,102,241,0.08)]"
-                      style={{ boxShadow: '0 10px 30px rgba(2,6,23,0.06)' }}
+                      className="absolute h-10 w-10 rounded-full bg-white shadow-[0_10px_30px_rgba(2,6,23,0.06)]"
                       animate={{ scale: [1, 1.06, 1] }}
-                      transition={{ duration: 1.8, repeat: Infinity, ease: 'easeInOut' }}
+                      transition={{
+                        duration: 1.8,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                      }}
                     />
 
                     <motion.div
@@ -145,6 +176,13 @@ export default function HowItWorksPage() {
           })}
         </motion.div>
       </div>
+
+      {/* soft bottom fade */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute bottom-0 left-0 right-0 h-32
+                   bg-gradient-to-t from-slate-50/100 via-slate-50/70 to-transparent z-10"
+      />
     </section>
   )
 }

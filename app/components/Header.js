@@ -38,7 +38,7 @@ export default function Header() {
           </Link>
           <Link
             href="/contact"
-            className="rounded-full bg-brand-gradient px-4 py-1.5 text-xs font-medium text-slate-950 shadow-soft-glow hover:brightness-110"
+            className="rounded-full bg-brand-gradient px-4 py-1.5 text-xs font-medium text-white shadow-soft-glow hover:brightness-110"
           >
             Contact
           </Link>

@@ -14,70 +14,94 @@ const fadeIn = {
 
 export default function AboutPage() {
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-900">
-      {/* Hero Section */}
-      <section className="relative w-full py-20">
-        <div className="pointer-events-none absolute inset-0 bg-gradient-to-b from-white via-slate-50 to-slate-100" />
-        
-        <div className="relative w-full px-4 sm:px-6 lg:px-12">
-          <div>
-            <p className="text-xs font-medium uppercase tracking-[0.3em] text-brand-accent">
-              About Dealora
-            </p>
-            <h1 className="mt-4 text-4xl font-semibold tracking-tight">
-              Built for users who never want to miss a reward again.
-            </h1>
-            <p className="mt-5 text-lg leading-relaxed text-slate-600">
-              Dealora exists to remove friction from how everyday users discover, redeem,
-              and track rewards. Today, coupons live in multiple apps, SMS inboxes,
-              screenshots, emails, and browser tabs. Important offers get buried or
-              expire before they are used.
-            </p>
-          </div>
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-purple-50/60 to-cyan-50/70 text-slate-900">
 
-          {/* Mission & Why */}
-          <div className="mt-16 grid gap-8 md:grid-cols-2">
-            <motion.div 
-              className="space-y-6 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm hover:shadow-md transition-all"
-              whileHover={{ y: -5 }}
-            >
-              <div className="inline-flex items-center rounded-full bg-blue-50 px-4 py-1.5">
-                <span className="text-xs font-medium text-blue-700">Our Mission</span>
+      {/* HERO */}
+      <section className="relative overflow-hidden px-4 py-24 sm:px-6 lg:px-12">
+        {/* ambient blobs */}
+        <div aria-hidden className="pointer-events-none absolute inset-0">
+          <div className="absolute -top-20 -left-20 h-96 w-96 rounded-full bg-purple-300/25 blur-3xl" />
+          <div className="absolute top-10 -right-20 h-[420px] w-[420px] rounded-full bg-cyan-300/25 blur-3xl" />
+        </div>
+
+        <div className="relative w-full">
+          <p className="text-xs font-medium uppercase tracking-[0.3em] text-brand-accent">
+            About Dealora
+          </p>
+
+          <h1 className="mt-4 text-4xl font-semibold tracking-tight sm:text-4xl">
+            Built for users who never want to miss a reward again.
+          </h1>
+
+          <p className="mt-6 text-lg leading-relaxed text-slate-700">
+            Dealora exists to remove friction from how everyday users discover, redeem,
+            and track rewards. Today, coupons live in multiple apps, SMS inboxes,
+            screenshots, emails, and browser tabs. Important offers get buried or
+            expire before they are used.
+          </p>
+        </div>
+
+        {/* bottom fade */}
+        <div
+          aria-hidden
+          className="pointer-events-none absolute bottom-0 left-0 right-0 h-28
+                     bg-gradient-to-t from-slate-50/100 via-slate-50/70 to-transparent"
+        />
+      </section>
+
+      {/* MISSION + WHY */}
+      <section className="relative px-4 py-8 sm:px-6 lg:px-12">
+        <div className="mx-auto grid max-w-5xl gap-8 md:grid-cols-2">
+
+          <motion.div
+            whileHover={{ y: -6 }}
+            className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white/80 p-8 backdrop-blur shadow-[0_20px_60px_rgba(2,6,23,0.08)]"
+          >
+            <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-purple-200/25 blur-3xl" />
+            <div className="relative">
+              <div className="inline-flex rounded-full bg-purple-100 px-4 py-1.5 text-xs font-medium text-purple-700">
+                Our Mission
               </div>
-              <p className="text-lg leading-relaxed text-slate-700">
+              <p className="mt-6 text-lg leading-relaxed text-slate-700">
                 Our mission is to become the single source of truth for your savings
                 and rewards. Dealora aims to centralise every live coupon, cashback,
                 and offer you are eligible for, and make it instantly redeemable.
               </p>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            <motion.div 
-              className="space-y-6 rounded-2xl border border-slate-200 bg-white p-8 shadow-sm hover:shadow-md transition-all"
-              whileHover={{ y: -5 }}
-            >
-              <div className="inline-flex items-center rounded-full bg-amber-50 px-4 py-1.5">
-                <span className="text-xs font-medium text-amber-700">Why We Built Dealora</span>
+          <motion.div
+            whileHover={{ y: -6 }}
+            className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white/80 p-8 backdrop-blur shadow-[0_20px_60px_rgba(2,6,23,0.08)]"
+          >
+            <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-cyan-200/25 blur-3xl" />
+            <div className="relative">
+              <div className="inline-flex rounded-full bg-amber-100 px-4 py-1.5 text-xs font-medium text-amber-700">
+                Why We Built Dealora
               </div>
-              <p className="text-lg leading-relaxed text-slate-700">
+              <p className="mt-6 text-lg leading-relaxed text-slate-700">
                 The rewards ecosystem is fragmented. Individual apps run excellent
                 offers, but users rarely see all of them in one view. The result is
                 lost value for both users and partners. Dealora bridges this gap with
                 a clean, unified interface.
               </p>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
+
         </div>
       </section>
 
-      {/* What Makes Us Different */}
-      <section className="w-full bg-white py-20">
-        <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-12">
-          <h2 className="text-3xl font-semibold tracking-tight">What makes Dealora different</h2>
+      {/* WHAT MAKES US DIFFERENT */}
+      <section className="relative px-4 py-24 sm:px-6 lg:px-12">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-3xl font-semibold tracking-tight">
+            What makes Dealora different
+          </h2>
           <p className="mt-4 text-lg text-slate-600">
             We're reimagining how rewards and coupons should work in a mobile-first world.
           </p>
 
-          <div className="mt-12 space-y-8">
+          <div className="mt-12 space-y-10">
             {[
               {
                 title: "Real-time Coupon Aggregation",
@@ -102,17 +126,17 @@ export default function AboutPage() {
             ].map((item, i) => (
               <motion.div
                 key={i}
+                variants={fadeIn}
                 initial="hidden"
                 whileInView="visible"
                 viewport={{ once: true }}
-                variants={fadeIn}
-                className="flex items-start space-x-4"
+                className="flex gap-4"
               >
-                <div className="mt-1 flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-lg bg-slate-100 text-xl">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 text-xl shadow-sm">
                   {item.icon}
                 </div>
                 <div>
-                  <h3 className="text-lg font-medium text-slate-900">{item.title}</h3>
+                  <h3 className="text-lg font-medium">{item.title}</h3>
                   <p className="mt-1 text-slate-600">{item.description}</p>
                 </div>
               </motion.div>
@@ -121,85 +145,69 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Vision */}
-      <section className="w-full bg-slate-50 py-20">
-        <div className="mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-12">
-          <motion.div 
-            className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 p-8 text-white shadow-xl sm:p-12"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10"></div>
-            <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-brand-accent/20"></div>
-            
-            <div className="relative z-10">
-              <h2 className="text-2xl font-semibold">Our Vision</h2>
-              <p className="mt-4 text-slate-200">
-                Over the next one to two years, the vision for Dealora is to become the most trusted rewards layer for consumers and brands in our core markets.
-              </p>
-              
-              <div className="mt-8 grid gap-4 sm:grid-cols-2">
-                {[
-                  "Onboard more categories and partner apps for deeper coverage.",
-                  "Expand cashback intelligence and savings insights for users.",
-                  "Provide brands with privacy-safe, aggregated insights on redemption.",
-                  "Maintain a sharp focus on user trust, control, and data security."
-                ].map((item, i) => (
-                  <div key={i} className="flex items-start space-x-3">
-                    <div className="mt-1 h-1.5 w-1.5 rounded-full bg-brand-accent"></div>
-                    <p className="text-slate-200">{item}</p>
-                  </div>
-                ))}
-              </div>
+      {/* VISION */}
+      <section className="relative px-4 py-24 sm:px-6 lg:px-12">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-white/80 p-10 backdrop-blur shadow-[0_30px_90px_rgba(2,6,23,0.10)]"
+        >
+          <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-purple-200/25 blur-3xl" />
+          <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-cyan-200/25 blur-3xl" />
+
+          <div className="relative">
+            <h2 className="text-2xl font-semibold">Our Vision</h2>
+            <p className="mt-4 text-slate-700">
+              Over the next one to two years, the vision for Dealora is to become the most trusted rewards layer for consumers and brands in our core markets.
+            </p>
+
+            <div className="mt-8 grid gap-4 sm:grid-cols-2">
+              {[
+                "Onboard more categories and partner apps for deeper coverage.",
+                "Expand cashback intelligence and savings insights for users.",
+                "Provide brands with privacy-safe, aggregated insights on redemption.",
+                "Maintain a sharp focus on user trust, control, and data security."
+              ].map((item, i) => (
+                <div key={i} className="flex gap-3">
+                  <div className="mt-2 h-1.5 w-1.5 rounded-full bg-brand-accent" />
+                  <p className="text-slate-700">{item}</p>
+                </div>
+              ))}
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </motion.div>
       </section>
 
       {/* CTA */}
-      <section className="w-full bg-slate-900 py-20 text-white">
-        <div className="relative mx-auto w-full max-w-4xl px-4 sm:px-6 lg:px-12">
-          <div className="absolute -right-10 -top-10 h-40 w-40 rounded-full bg-white/10"></div>
-          <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-brand-accent/20"></div>
-          
-          <div className="relative z-10">
-            <h2 className="text-3xl font-semibold tracking-tight">Ready to simplify your rewards?</h2>
-            <p className="mt-4 max-w-2xl text-lg text-slate-300">
-              Join thousands of users who are already saving time and money with Dealora.
-            </p>
-            
-            <div className="mt-8 flex flex-col space-y-4 sm:flex-row sm:space-y-0 sm:space-x-4">
-              <Link
-                href="/signup"
-                className="inline-flex items-center justify-center rounded-full bg-brand-accent px-6 py-3 text-sm font-medium text-white shadow-sm hover:bg-brand-accent/90 focus:outline-none focus:ring-2 focus:ring-brand-accent focus:ring-offset-2"
-              >
-                Get Started for Free
-              </Link>
-              <Link
-                href="/how-it-works"
-                className="inline-flex items-center text-sm font-medium text-white hover:text-slate-300"
-              >
-                Learn how it works
-                <svg
-                  className="ml-1 h-4 w-4"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </Link>
-            </div>
+      <section className="relative px-4 py-24 sm:px-6 lg:px-12">
+        <div className="mx-auto max-w-4xl text-center">
+          <h2 className="text-3xl font-semibold tracking-tight">
+            Ready to simplify your rewards?
+          </h2>
+          <p className="mt-4 text-lg text-slate-700">
+            Join thousands of users who are already saving time and money with Dealora.
+          </p>
+
+          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+            <Link
+              href="/signup"
+              className="rounded-full bg-brand-accent px-7 py-3 text-sm font-medium text-white shadow hover:bg-brand-accent/90"
+            >
+              Get Started for Free
+            </Link>
+
+            <Link
+              href="/how-it-works"
+              className="text-sm font-medium text-slate-700 hover:text-slate-900"
+            >
+              Learn how it works →
+            </Link>
           </div>
         </div>
       </section>
+
     </div>
   )
 }
