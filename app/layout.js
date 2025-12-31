@@ -77,8 +77,8 @@ export default function RootLayout({ children }) {
                     <Link href="/contact" className="hover:text-slate-900">
                       Contact page
                     </Link>
-                    <a href="mailto:support@dealora.app" className="hover:text-slate-900">
-                      support@dealora.app
+                    <a href="mailto:support@dealora.co.in" className="hover:text-slate-900">
+                      support@dealora.co.in
                     </a>
                   </div>
                 </div>
