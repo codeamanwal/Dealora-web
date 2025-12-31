@@ -68,13 +68,13 @@ export default function FAQPage() {
             Frequently asked questions.
           </h1>
 
-          <p className="mt-5  text-lg leading-relaxed text-slate-600">
+          <p className="mt-5 text-lg leading-relaxed text-slate-600">
             Short, clear answers to the most common questions about Dealora. The experience
             may evolve as we add new partners and capabilities.
           </p>
 
           {/* FAQ list */}
-          <div className="mt-14 space-y-4">
+          <div className="mt-14 space-y-4 mx-auto max-w-2xl">
             {faqs.map((item, idx) => {
               const isOpen = openIndex === idx
 

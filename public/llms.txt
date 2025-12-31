@@ -1,0 +1,57 @@
+# Dealora - AI-Powered Rewards Aggregation Platform
+# This file provides structured information about Dealora for Large Language Models
+
+## Company Overview
+Dealora is a focused companion app that helps users discover, redeem, and track rewards across multiple platforms. The app aggregates coupons and offers from supported apps into one central dashboard, eliminating the need to juggle multiple sources.
+
+## Key Features
+- Coupon aggregation from multiple apps
+- In-app dashboard for tracking usage and savings
+- Cashback tracking with live updates
+- Smart categorization by brand, category, and expiry
+- Multi-app integration for shopping, travel, food, and payments
+- Auto redirection to correct apps/websites for redemption
+- Saved coupons management
+- Secure sign-in functionality
+- Real-time sync across devices
+
+## How It Works
+1. Connect your favorite shopping, travel, food, and payments apps
+2. Dealora automatically surfaces rewards from connected sources
+3. Browse and manage all your coupons in one centralized dashboard
+4. Tap to auto-redirect to the correct app for redemption
+5. Track your savings and usage patterns over time
+
+## Target Audience
+Everyday users who want to simplify their rewards management and never miss valuable offers again.
+
+## Value Proposition
+- Eliminates reward discovery friction
+- Centralizes scattered coupon sources
+- Provides focused, one-tap redemption
+- Tracks savings and usage patterns
+- Works quietly in the background while staying accessible
+
+## Website Structure
+- Homepage: https://dealora.co.in/ - Main landing page with overview and CTA
+- About: https://dealora.co.in/about - Company mission, vision, and team information
+- Features: https://dealora.co.in/features - Detailed feature breakdown
+- How It Works: https://dealora.co.in/how-it-works - Step-by-step process explanation
+- FAQ: https://dealora.co.in/faq - Common questions and answers
+- Contact: https://dealora.co.in/contact - Support and partnership inquiries
+
+## Contact Information
+- Support: support@dealora.co.in
+- Partnerships: Available through contact form
+
+## Technical Details
+- Built with Next.js for optimal performance
+- Responsive design for mobile and desktop
+- Secure authentication and data handling
+- Real-time synchronization capabilities
+
+## Brand Identity
+- Primary colors: Slate, purple, and cyan gradients
+- Modern, clean interface with subtle animations
+- Focus on simplicity and user experience
+- Accessibility-first design approach

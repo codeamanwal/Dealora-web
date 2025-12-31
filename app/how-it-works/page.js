@@ -1,6 +1,7 @@
 "use client"
 
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
+import { useRef } from "react"
 import {
   FiMail,
   FiLink,
@@ -45,7 +46,7 @@ const steps = [
 
 export default function HowItWorksPage() {
   return (
-    <section className="relative w-full bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 py-12 text-slate-900 overflow-hidden">
+    <section className="relative w-full bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 pt-12 pb-40 text-slate-900 overflow-hidden">
       {/* background blobs */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
         <div className="absolute -top-24 -left-24 h-[520px] w-[520px] rounded-full bg-purple-300/25 blur-3xl" />
@@ -72,7 +73,7 @@ export default function HowItWorksPage() {
           <h2 className="mt-4 text-4xl font-semibold tracking-tight text-slate-900">
             A simple journey from sign-up to savings.
           </h2>
-          <p className="mt-5 text-lg leading-relaxed text-slate-600">
+          <p className="mt-5 text-lg leading-relaxed text-slate-600 mb-44">
             Dealora is designed as a smooth, guided flow. From the moment you sign up
             to the moment you redeem a coupon and see cashback reflected, every step is
             optimised for clarity and speed.
@@ -81,7 +82,7 @@ export default function HowItWorksPage() {
 
         {/* steps */}
         <motion.div
-          className="space-y-14"
+          className="space-y-52"
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
@@ -101,16 +102,20 @@ export default function HowItWorksPage() {
               FiSave,
             ]
             const Icon = icons[index % icons.length]
+            const stepRef = useRef(null)
+            const isInView = useInView(stepRef, { once: true, margin: "-100px" })
 
             return (
               <motion.div
                 key={step.title}
+                ref={stepRef}
+                initial="hidden"
+                animate={isInView ? "visible" : "hidden"}
                 variants={{
-                  hidden: { opacity: 0, y: 20 },
-                  show: {
+                  hidden: { opacity: 0 },
+                  visible: {
                     opacity: 1,
-                    y: 0,
-                    transition: { duration: 0.44, ease: "easeOut" },
+                    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
                   },
                 }}
                 className="relative grid grid-cols-2 items-start"
@@ -120,6 +125,20 @@ export default function HowItWorksPage() {
                   tabIndex={0}
                   role="article"
                   aria-labelledby={`step-${index}-title`}
+                  variants={{
+                    hidden: {
+                      opacity: 0,
+                      x: isLeft ? -50 : 50,
+                    },
+                    visible: {
+                      opacity: 1,
+                      x: 0,
+                      transition: {
+                        duration: 0.6,
+                        ease: [0.16, 1, 0.3, 1],
+                      },
+                    },
+                  }}
                   whileHover={{ scale: 1.01 }}
                   whileFocus={{ scale: 1.01 }}
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -155,20 +174,56 @@ export default function HowItWorksPage() {
                 <div className="relative flex items-center justify-center">
                 {/* GIF LEFT (even steps: 2,4,6...) */}
   {!isLeft && (
-    <img
+    <motion.img
       src={[
         "/how-it-works-gifs/output-onlinegiftools1.gif",
-        "/how-it-works-gifs/output-onlinegiftools2.gif",
+        "/Apps Authetication 2 (1).png",
         "/how-it-works-gifs/output-onlinegiftools3.gif",
-        "/how-it-works-gifs/output-onlinegiftools4.gif",
+        "/Detail page 1 (1).png",
         "/how-it-works-gifs/output-onlinegiftools5.gif",
-        "/how-it-works-gifs/output-onlinegiftools6.gif",
+        "/Dashboard Page (1).png",
       ][index]}
       alt={`Step ${index + 1} demonstration`}
-      className="absolute right-full mr-40 h-10 w-10 mix-blend-darken"
+      variants={{
+        hidden: {
+          opacity: 0,
+          scale: 0.8,
+          x: 30,
+        },
+        visible: {
+          opacity: 1,
+          scale: 1,
+          x: 0,
+          transition: {
+            duration: 0.7,
+            ease: [0.16, 1, 0.3, 1],
+            delay: 0.2,
+          },
+        },
+      }}
+      className="absolute right-full mr-16 h-64 min-w-64 w-64 sm:h-80 sm:min-w-80 sm:w-80 md:h-96 md:min-w-96 md:w-96 lg:h-[400px] lg:min-w-[400px] lg:w-[400px] mix-blend-darken object-contain"
     />
   )}
-                  <motion.div className="relative flex items-center justify-center" aria-hidden>
+                  <motion.div 
+                    className="relative flex items-center justify-center" 
+                    aria-hidden
+                    variants={{
+                      hidden: {
+                        opacity: 0,
+                        scale: 0,
+                      },
+                      visible: {
+                        opacity: 1,
+                        scale: 1,
+                        transition: {
+                          type: "spring",
+                          stiffness: 200,
+                          damping: 15,
+                          delay: 0.3,
+                        },
+                      },
+                    }}
+                  >
                     <motion.div
                       className="absolute h-10 w-10 rounded-full bg-white shadow-[0_10px_30px_rgba(2,6,23,0.06)]"
                       animate={{ scale: [1, 1.06, 1] }}
@@ -189,17 +244,34 @@ export default function HowItWorksPage() {
                   </motion.div>
                   {/* GIF RIGHT (odd steps: 1,3,5...) */}
   {isLeft && (
-    <img
+    <motion.img
       src={[
-        "/how-it-works-gifs/output-onlinegiftools1.gif",
+        "/Signup.png",
         "/how-it-works-gifs/output-onlinegiftools2.gif",
-        "/how-it-works-gifs/output-onlinegiftools3.gif",
+        "/Coupons listing 1 (1).png",
         "/how-it-works-gifs/output-onlinegiftools4.gif",
-        "/how-it-works-gifs/output-onlinegiftools5.gif",
+        "/Redeemed Coupons.png",
         "/how-it-works-gifs/output-onlinegiftools6.gif",
       ][index]}
       alt={`Step ${index + 1} demonstration`}
-      className="absolute left-full ml-40 h-10 w-10"
+      variants={{
+        hidden: {
+          opacity: 0,
+          scale: 0.8,
+          x: -30,
+        },
+        visible: {
+          opacity: 1,
+          scale: 1,
+          x: 0,
+          transition: {
+            duration: 0.7,
+            ease: [0.16, 1, 0.3, 1],
+            delay: 0.2,
+          },
+        },
+      }}
+      className="absolute left-full ml-16 h-64 min-w-64 w-64 sm:h-80 sm:min-w-80 sm:w-80 md:h-96 md:min-w-96 md:w-96 lg:h-[400px] lg:min-w-[400px] lg:w-[400px] object-contain"
     />
   )}
                 </div>

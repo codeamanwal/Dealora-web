@@ -1,10 +1,68 @@
 'use client'
 
 import { motion } from "framer-motion"
-import { useState } from "react"
+import Image from "next/image"
 
 export default function FeaturesPage() {
-  const [activeIndex, setActiveIndex] = useState(null)
+  const highlightedFeatures = [
+    {
+      id: 1,
+      title: "Coupon aggregation",
+      description: "Pull live coupons and offers from supported apps into one central dashboard instead of juggling multiple sources.",
+      icon: "/voucher.png",
+      gradient: "from-purple-500 via-violet-600 to-purple-700",
+      accentColor: "purple",
+    },
+    {
+      id: 2,
+      title: "Multi-app integration",
+      description: "Connect shopping, travel, food, and payments apps so rewards surface automatically.",
+      icon: "/data-integration.png",
+      gradient: "from-emerald-500 via-teal-600 to-emerald-700",
+      accentColor: "emerald",
+    },
+    {
+      id: 3,
+      title: "Real-time sync",
+      description: "Rewards update instantly across devices, ensuring you always have the latest offers at your fingertips.",
+      icon: "/refresh.png",
+      gradient: "from-blue-500 via-blue-600 to-blue-700",
+      accentColor: "blue",
+    },
+  ]
+
+  const otherFeatures = [
+    {
+      title: "In-app dashboard",
+      description: "Track coupons, usage, and savings in one focused view.",
+      icon: "/data.png",
+    },
+    {
+      title: "Cashback tracking",
+      description: "Track pending and confirmed cashback in real time.",
+      icon: "/rupee.png",
+    },
+    {
+      title: "Smart categorisation",
+      description: "Organised by brand, category, and expiry.",
+      icon: "/subfolder.png",
+    },
+    {
+      title: "Auto redirection",
+      description: "Jump directly to the correct app or website to redeem the deal.",
+      icon: "/redirect.png",
+    },
+    {
+      title: "Saved coupons",
+      description: "Bookmark deals and use them later.",
+      icon: "/mobile-coupon.png",
+    },
+    {
+      title: "Secure sign-in",
+      description: "Privacy-first authentication and data protection.",
+      icon: "/log-in.png",
+    },
+  ]
 
   return (
     <div className="relative min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 text-slate-900 overflow-hidden">
@@ -36,175 +94,103 @@ export default function FeaturesPage() {
           </p>
         </div>
 
-        {/* Feature Grid */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 ">
-          {/* Coupon Aggregation */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="md:col-span-2 bg-white/95 backdrop-blur-sm rounded-2xl p-4 border border-slate-200 hover:shadow-lg transition-all"
-          >
-          
-              <div className="w-12 h-12 flex items-center justify-center">
-                <img src="/voucher.png" alt="Coupon icon" className="w-12 h-12" />
-              </div>
-              <h3 className="text-lg font-semibold text-slate-900">
-                Coupon aggregation
-              </h3>
-              <p className="text-sm text-slate-600">
-                Pull live coupons and offers from supported apps into one central dashboard instead of juggling multiple sources.
-              </p>
-            {/* <div className="absolute -top-20 -right-20 w-64 h-64 bg-violet-200/30 blur-3xl rounded-full" /> */}
-          </motion.div>
+        {/* Highlighted Features - Top Section */}
+        <div className="mb-20">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
+            {highlightedFeatures.map((feature, index) => (
+              <motion.div
+                key={feature.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.15 }}
+                whileHover={{ 
+                  y: -12,
+                  scale: 1.02,
+                  transition: { type: "spring", stiffness: 300, damping: 20 }
+                }}
+                className="relative group"
+              >
+                {/* Gradient Background Card */}
+                <div className={`relative h-full rounded-3xl bg-gradient-to-br ${feature.gradient} p-[2px] overflow-hidden`}>
+                  <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-50" />
+                  <div className="relative h-full bg-white/95 backdrop-blur-sm rounded-[1.35rem] p-8 flex flex-col">
+                    {/* Animated gradient glow */}
+                    <motion.div
+                      className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-10 rounded-[1.35rem] transition-opacity duration-500`}
+                      animate={{
+                        backgroundPosition: ["0% 0%", "100% 100%"],
+                      }}
+                      transition={{
+                        duration: 3,
+                        repeat: Infinity,
+                        repeatType: "reverse",
+                      }}
+                    />
+                    
+                    {/* Icon */}
+                    <div className="w-12 h-12 flex items-center justify-center mb-6">
+                      <img 
+                        src={feature.icon} 
+                        alt={`${feature.title} icon`} 
+                        className="w-12 h-12 object-contain"
+                      />
+                    </div>
 
-          {/* In-App Dashboard */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="md:row-span-1 bg-white/95 backdrop-blur-sm rounded-2xl p-4 border border-slate-200 hover:shadow-lg transition-all"
-          >
-            <div className="w-12 h-12 flex items-center justify-center">
-              <img src="/data.png" alt="dashboard icon" className="w-12 h-12" />
-            </div>
-            <h3 className="text-lg font-semibold text-slate-900">
-              In-app dashboard
-            </h3>
-            <p className="text-sm text-slate-600">
-              Track coupons, usage, and savings in one focused view.
-            </p>
+                    {/* Content */}
+                    <h3 className="text-2xl font-bold text-slate-900 mb-3 relative z-10">
+                      {feature.title}
+                    </h3>
+                    <p className="text-base leading-relaxed text-slate-600 relative z-10">
+                      {feature.description}
+                    </p>
 
-            {/* <div className="mt-8 space-y-3">
-              {[40, 65, 50, 85, 60].map((w, i) => (
-                <div key={i} className="h-2 bg-slate-100 rounded-full overflow-hidden">
-                  <div
-                    className="h-full bg-violet-400 transition-all duration-700"
-                    style={{ width: `${w}%` }}
+                    {/* Decorative accent */}
+                    <div className={`absolute bottom-0 right-0 w-32 h-32 bg-gradient-to-br ${feature.gradient} opacity-5 rounded-tl-full blur-2xl`} />
+                  </div>
+                </div>
+
+                {/* Outer glow effect */}
+                <motion.div
+                  className={`absolute -inset-1 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-30 rounded-3xl blur-xl -z-10 transition-opacity duration-500`}
+                />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Other Features Grid */}
+        <div>
+          <h2 className="text-2xl font-semibold text-slate-900 mb-8 text-center">
+            Additional Features
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {otherFeatures.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                whileHover={{ y: -6, scale: 1.02 }}
+                className="bg-white/95 backdrop-blur-sm rounded-2xl p-6 border border-slate-200/60 hover:border-slate-300 hover:shadow-xl transition-all duration-300"
+              >
+                <div className="w-12 h-12 flex items-center justify-center mb-4">
+                  <img 
+                    src={feature.icon} 
+                    alt={`${feature.title} icon`} 
+                    className="w-12 h-12 object-contain"
                   />
                 </div>
-              ))}
-            </div> */}
-
-            {/* <div className="absolute top-0 right-0 w-72 h-72 bg-violet-500/30 blur-[100px]" /> */}
-          </motion.div>
-
-          {/* Cashback Tracking */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 border border-slate-200 hover:shadow-lg transition-all"
-          >
-            {/* <div className="flex justify-between mb-4"> */}
-              <div className="w-12 h-12 flex items-center justify-center">
-                <img src="/rupee.png" alt="package icon" className="w-12 h-12" />
-              </div>
-            {/* </div> */}
-            <h4 className="text-lg font-semibold text-slate-900">
-              Cashback tracking
-            </h4>
-            <p className="text-sm text-slate-600">
-              Track pending and confirmed cashback in real time.
-            </p>
-          </motion.div>
-
-          {/* Smart Categorisation */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 border border-slate-200 hover:shadow-lg transition-all"
-          >
-            <div className="w-12 h-12 flex items-center justify-center">
-              <img src="/subfolder.png" alt="options icon" className="w-12 h-12" />
-            </div>
-            <h4 className="text-lg font-semibold text-slate-900">
-              Smart categorisation
-            </h4>
-            <p className="text-sm text-slate-600">
-              Organised by brand, category, and expiry.
-            </p>
-            {/* <div className="flex flex-wrap gap-2">
-              {["Shopping", "Travel", "Food"].map(tag => (
-                <span key={tag} className="text-xs px-3 py-1 bg-slate-100 rounded-full text-slate-600">
-                  {tag}
-                </span>
-              ))}
-            </div> */}
-          </motion.div>
-
-          {/* Auto Redirection */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 border border-slate-200 hover:shadow-lg transition-all"
-          >
-            <div className="w-12 h-12 flex items-center justify-center">
-              <img src="/redirect.png" alt="redirection icon" className="w-12 h-12" />
-            </div>
-            <h4 className="text-lg font-semibold text-slate-900">
-              Auto redirection
-            </h4>
-            <p className="text-sm text-slate-600">
-              Jump directly to the correct app or website to redeem the deal.
-            </p>
-          </motion.div>
-          {/* Multi-App Integration */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="md:col-span-2 bg-white/95 backdrop-blur-sm rounded-2xl p-4 border border-slate-200 hover:shadow-lg transition-all"
-          >
-            <div className="w-12 h-12 flex items-center justify-center">
-              <img src="/data-integration.png" alt="integration icon" className="w-12 h-12" />
-            </div>
-            <h4 className="text-lg font-semibold text-slate-900">
-              Multi-app integration
-            </h4>
-            <p className="text-sm text-slate-600">
-              Connect shopping, travel, food, and payments apps so rewards surface automatically.
-            </p>
-          </motion.div>
-
-
-          {/* Saved Coupons */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 border border-slate-200 hover:shadow-lg transition-all"
-          >
-            <div className="w-12 h-12 flex items-center justify-center">
-              <img src="/mobile-coupon.png" alt="saved coupon icon" className="w-12 h-12" />
-            </div>
-            <h4 className="text-lg font-semibold text-slate-900">
-              Saved coupons
-            </h4>
-            <p className="text-sm text-slate-600">
-              Bookmark deals and use them later.
-            </p>
-          </motion.div>
-
-          {/* Secure Sign-in */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 border border-slate-200 hover:shadow-lg transition-all"
-          >
-            <div className="w-12 h-12 flex items-center justify-center">
-              <img src="/log-in.png" alt="secure log in icon" className="w-12 h-12" />
-            </div>
-            <h4 className="text-lg font-semibold text-slate-900">
-              Secure sign-in
-            </h4>
-            <p className="text-sm text-slate-600">
-              Privacy-first authentication and data protection.
-            </p>
-          </motion.div>
-
-          {/* Real-time Sync */}
-          <motion.div
-            whileHover={{ y: -6 }}
-            className="bg-white/95 backdrop-blur-sm rounded-2xl p-4 border border-slate-200 hover:shadow-lg transition-all"
-          >
-            <div className="w-12 h-12 flex items-center justify-center">
-              <img src="/refresh.png" alt="real time sync icon" className="w-12 h-12" />
-            </div>
-            <h4 className="text-lg font-semibold text-slate-900">
-              Real-time sync
-            </h4>
-            <p className="text-sm text-slate-600">
-              Rewards update instantly across devices.
-            </p>
-          </motion.div>
+                <h4 className="text-lg font-semibold text-slate-900 mb-2">
+                  {feature.title}
+                </h4>
+                <p className="text-sm leading-relaxed text-slate-600">
+                  {feature.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </section>
 

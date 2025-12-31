@@ -51,7 +51,7 @@ export default function AboutPage() {
           >
             <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-purple-200/25 blur-3xl" />
             <div className="relative">
-              <div className="inline-flex rounded-full bg-purple-100 px-4 py-1.5 text-xs font-medium text-purple-700">
+              <div className="inline-flex rounded-full bg-purple-100 px-4 py-1.5 text-xl font-medium text-purple-700">
                 Our Mission
               </div>
               <p className="mt-6 text-lg leading-relaxed text-slate-700">
@@ -68,7 +68,7 @@ export default function AboutPage() {
           >
             <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-cyan-200/25 blur-3xl" />
             <div className="relative">
-              <div className="inline-flex rounded-full bg-amber-100 px-4 py-1.5 text-xs font-medium text-amber-700">
+              <div className="inline-flex rounded-full bg-amber-100 px-4 py-1.5 text-xl font-medium text-amber-700">
                 Why We Built Dealora
               </div>
               <p className="mt-6 text-lg leading-relaxed text-slate-700">

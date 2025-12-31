@@ -113,7 +113,7 @@ export default function HomePage() {
           style={{ y: heroOrbY2 }}
           className="pointer-events-none absolute -right-32 top-[120px] h-[560px] w-[560px] rounded-full bg-[radial-gradient(circle_at_center,_rgba(124,58,237,0.18),_transparent_62%)] blur-2xl"
         />
-  <div className="relative flex w-full flex-col gap-8 px-4 pb-12 sm:px-6 lg:px-20 md:flex-row md:items-start md:pb-20 md:pt-40">
+  <div className="relative flex w-full flex-col gap-8 px-4 pb-12 sm:px-8 lg:px-9 xl:px-20 md:flex-row md:items-start md:pb-20 pt-8 sm:pt-10 md:pt-20 lg:pt-40">
            <div className="flex-1 space-y-7">
 
             <h1 className="!mt-0 text-balance text-[clamp(2.6rem,4.5vw,4.5rem)] font-semibold leading-[1.05] tracking-[-0.04em]">
@@ -181,7 +181,7 @@ export default function HomePage() {
             </div>
             
             <div className="mt-6">
-              <p className="text-sm text-slate-500 w-64 xl:w-full">
+              <p className="text-xs lg:text-sm text-slate-500 w-64  xl:w-full">
                 For business and partnership enquiries, visit the contact page.
               </p>
             </div>
@@ -196,7 +196,7 @@ export default function HomePage() {
             <motion.div
   className="relative mx-auto flex h-[550px] w-full items-end max-w-[460px]
              sm:h-[700px] sm:max-w-[600px]
-             md:h-[720px] md:max-w-[620px]
+             md:h-[670px] md:max-w-[620px]
              lg:h-[820px] lg:max-w-[720px]
              xl:h-[820px] xl:max-w-[720px]
              md:ml-auto md:mr-0 md:justify-end
@@ -512,7 +512,7 @@ export default function HomePage() {
         alt={item.title}
         // Use fill for Next.js Images to automatically fit the parent container
         fill 
-        className="object-cover transition-transform duration-300 group-hover:scale-105"
+        className="object-fill transition-transform duration-300 group-hover:scale-105"
       />
     </div>
   </div>
