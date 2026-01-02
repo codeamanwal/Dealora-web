@@ -150,7 +150,7 @@ export default function HowItWorksPage() {
                     <div className="min-w-0">
                       <h3
                         id={`step-${index}-title`}
-                        className="text-lg font-semibold text-slate-900 inline-flex items-center gap-3"
+                        className="text-md sm:text-lg font-semibold text-slate-900 inline-flex items-center gap-3"
                       >
                         <span className="hidden sm:inline-flex">
                           <Icon
@@ -161,7 +161,7 @@ export default function HowItWorksPage() {
                         {step.title}
                       </h3>
 
-                      <p className="mt-3 text-sm leading-relaxed text-slate-600">
+                      <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-600">
                         {step.description}
                       </p>
                     </div>
@@ -201,7 +201,7 @@ export default function HowItWorksPage() {
           },
         },
       }}
-      className="absolute right-full mr-16 h-64 min-w-64 w-64 sm:h-80 sm:min-w-80 sm:w-80 md:h-96 md:min-w-96 md:w-96 lg:h-[400px] lg:min-w-[400px] lg:w-[400px] mix-blend-darken object-contain"
+      className="absolute right-full -mr-10 sm:mr-16 h-64 min-w-64 w-64 sm:h-80 sm:min-w-80 sm:w-80 md:h-96 md:min-w-96 md:w-96 lg:h-[400px] lg:min-w-[400px] lg:w-[400px] mix-blend-darken object-contain"
     />
   )}
                   <motion.div 
@@ -271,7 +271,7 @@ export default function HowItWorksPage() {
           },
         },
       }}
-      className="absolute left-full ml-16 h-64 min-w-64 w-64 sm:h-80 sm:min-w-80 sm:w-80 md:h-96 md:min-w-96 md:w-96 lg:h-[400px] lg:min-w-[400px] lg:w-[400px] object-contain"
+      className="absolute left-full -ml-10 sm:ml-16 h-64 min-w-64 w-64 sm:h-80 sm:min-w-80 sm:w-80 md:h-96 md:min-w-96 md:w-96 lg:h-[400px] lg:min-w-[400px] lg:w-[400px] object-contain"
     />
   )}
                 </div>
