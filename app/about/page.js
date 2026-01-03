@@ -95,22 +95,22 @@ export default function AboutPage() {
               {
                 title: "Real-time Coupon Aggregation",
                 description: "Automatically pulls live coupons and offers from your connected apps and accounts.",
-                icon: "🔄"
+                icon: "/time.png"
               },
               {
                 title: "Unified Dashboard",
                 description: "See all available offers in one place, organized by category and expiration date.",
-                icon: "📊"
+                icon: "/layout.png"
               },
               {
                 title: "Smart Notifications",
                 description: "Get alerts for expiring offers and personalized recommendations.",
-                icon: "🔔"
+                icon: "/notification.png"
               },
               {
                 title: "Privacy First",
                 description: "Your data stays on your device. We never sell or share your personal information.",
-                icon: "🔒"
+                icon: "/keyhole.png"
               }
             ].map((item, i) => (
               <motion.div
@@ -122,7 +122,11 @@ export default function AboutPage() {
                 className="flex gap-4"
               >
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white/80 text-xl shadow-sm">
-                  {item.icon}
+                  {item.icon.startsWith('/') ? (
+                    <img src={item.icon} alt={item.title} className="w-6 h-6" />
+                  ) : (
+                    item.icon
+                  )}
                 </div>
                 <div>
                   <h3 className="text-lg font-medium">{item.title}</h3>
@@ -139,31 +143,66 @@ export default function AboutPage() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="relative mx-auto max-w-4xl overflow-hidden rounded-3xl border border-slate-200 bg-white/80 p-10 backdrop-blur shadow-[0_30px_90px_rgba(2,6,23,0.10)]"
+          whileHover={{ 
+            y: -8,
+            scale: 1.01,
+            transition: { type: "spring", stiffness: 300, damping: 20 }
+          }}
+          className="relative mx-auto max-w-4xl group"
         >
-          <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-purple-200/25 blur-3xl" />
-          <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-cyan-200/25 blur-3xl" />
+          {/* Gradient Border */}
+          <div className="relative rounded-3xl bg-gradient-to-br from-purple-500 via-blue-600 to-cyan-500 p-[2px] overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-br from-white/20 to-transparent opacity-50" />
+            <div className="relative bg-white/95 backdrop-blur-sm rounded-[1.35rem] p-10">
+              {/* Animated gradient glow */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-br from-purple-500 via-blue-600 to-cyan-500 opacity-0 group-hover:opacity-10 rounded-[1.35rem] transition-opacity duration-500"
+                animate={{
+                  backgroundPosition: ["0% 0%", "100% 100%"],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  repeatType: "reverse",
+                }}
+              />
+              
+              {/* Enhanced background blobs */}
+              <div className="absolute -top-10 -right-10 h-40 w-40 rounded-full bg-purple-300/30 blur-3xl" />
+              <div className="absolute -bottom-10 -left-10 h-40 w-40 rounded-full bg-cyan-300/30 blur-3xl" />
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-60 w-60 rounded-full bg-blue-300/20 blur-3xl" />
 
-          <div className="relative">
-            <h2 className="text-2xl font-semibold">Our Vision</h2>
-            <p className="mt-4 text-slate-700">
-              Over the next one to two years, the vision for Dealora is to become the most trusted rewards layer for consumers and brands in our core markets.
-            </p>
-
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {[
-                "Onboard more categories and partner apps for deeper coverage.",
-                "Expand cashback intelligence and savings insights for users.",
-                "Provide brands with privacy-safe, aggregated insights on redemption.",
-                "Maintain a sharp focus on user trust, control, and data security."
-              ].map((item, i) => (
-                <div key={i} className="flex gap-3">
-                  <div className="mt-2 h-1.5 w-1.5 rounded-full bg-brand-accent" />
-                  <p className="text-slate-700">{item}</p>
+              <div className="relative">
+                <div className="inline-flex rounded-full bg-gradient-to-r from-purple-100 via-blue-100 to-cyan-100 px-0 py-0 text-2xl font-semibold bg-clip-text">
+                  <span className="bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    Our Vision
+                  </span>
                 </div>
-              ))}
+                <p className="mt-6 text-lg leading-relaxed text-slate-700">
+                  Over the next one to two years, the vision for Dealora is to become the most trusted rewards layer for consumers and brands in our core markets.
+                </p>
+
+                <div className="mt-8 grid gap-4 sm:grid-cols-2">
+                  {[
+                    "Onboard more categories and partner apps for deeper coverage.",
+                    "Expand cashback intelligence and savings insights for users.",
+                    "Provide brands with privacy-safe, aggregated insights on redemption.",
+                    "Maintain a sharp focus on user trust, control, and data security."
+                  ].map((item, i) => (
+                    <div key={i} className="flex gap-3">
+                      <div className="mt-2 h-2 w-2 rounded-full bg-gradient-to-br from-purple-500 to-cyan-500 flex-shrink-0" />
+                      <p className="text-slate-700">{item}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
+
+          {/* Outer glow effect */}
+          <motion.div
+            className="absolute -inset-1 bg-gradient-to-br from-purple-500 via-blue-600 to-cyan-500 opacity-0 group-hover:opacity-30 rounded-3xl blur-xl -z-10 transition-opacity duration-500"
+          />
         </motion.div>
 
         {/* CTA */}
