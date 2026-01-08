@@ -1,20 +1,55 @@
 'use client'
 
 import { useState } from "react"
-import emailjs from "@emailjs/browser"
+import { useEffect } from "react"
+
+
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" })
+  const [form, setForm] = useState({
+  name: "",
+  email: "",
+  message: "",
+  company: "", // honeypot
+})
   const [status, setStatus] = useState("idle")
   const [error, setError] = useState("")
+  const [cooldownLeft, setCooldownLeft] = useState(0)
+  useEffect(() => {
+  if (cooldownLeft <= 0) return
+
+  const timer = setInterval(() => {
+    setCooldownLeft((prev) => {
+      if (prev <= 1) {
+        clearInterval(timer)
+        return 0
+      }
+      return prev - 1
+    })
+  }, 1000)
+
+  return () => clearInterval(timer)
+}, [cooldownLeft])
+const SUBMIT_COOLDOWN_MS = 10_000 // 10 seconds
 
 async function handleSubmit(e) {
   e.preventDefault()
-  setStatus("submitting")
   setError("")
+  const lastSubmit = localStorage.getItem("contact_last_submit")
+  const now = Date.now()
+
+  if (lastSubmit && now - Number(lastSubmit) < SUBMIT_COOLDOWN_MS) {
+    const remaining = Math.ceil(
+      (SUBMIT_COOLDOWN_MS - (now - Number(lastSubmit))) / 1000
+    )
+    setError(`Please wait ${remaining} seconds before sending another message.`)
+    setStatus("idle")
+    return
+  }
+  setStatus("submitting")
 
   try {
-    await fetch("https://script.google.com/macros/s/AKfycbxmFDaa2Uvx1VUyhhb1383jLbTnrUiwz_siBZrL6e5Fd0A5WcvvyO1JCTKgMY2Nfhio/exec", {
+    await fetch("https://script.google.com/macros/s/AKfycbzf3XZGea6BbiKzY5RVfQ7CTRHUs9UHODPt3twsZI_EdgmwuYbaXOQxAgEHYnwsClWQ/exec", {
       method: "POST",
       mode: "no-cors",
       headers: {
@@ -24,8 +59,15 @@ async function handleSubmit(e) {
     })
 
     // If fetch didn't throw, assume success
-    setStatus("submitted")
-    setForm({ name: "", email: "", message: "" })
+    localStorage.setItem("contact_last_submit", String(now))
+setCooldownLeft(SUBMIT_COOLDOWN_MS / 1000)
+setStatus("submitted")
+setForm({
+  name: "",
+  email: "",
+  message: "",
+  company: "",
+})
 
   } catch (err) {
     setStatus("error")
@@ -38,7 +80,15 @@ async function handleSubmit(e) {
     setForm((current) => ({ ...current, [name]: value }))
   }
 
+  const lastSubmit =
+  typeof window !== "undefined"
+    ? localStorage.getItem("contact_last_submit")
+    : null
+
+const isCooldown = cooldownLeft > 0
+
   return (
+    
     <div className="relative w-full min-h-screen bg-gradient-to-br from-slate-50 via-purple-50/60 to-cyan-50/70 text-slate-900 overflow-hidden">
       {/* ambient blobs */}
       <div aria-hidden className="pointer-events-none absolute inset-0">
@@ -75,6 +125,19 @@ async function handleSubmit(e) {
             onSubmit={handleSubmit}
             className="space-y-4 rounded-2xl border border-slate-200 bg-white/95 backdrop-blur-sm p-6 shadow-sm"
           >
+            {/* Honeypot field – should stay empty */}
+<div style={{ display: "none" }}>
+  <label>
+    Company
+    <input
+      type="text"
+      name="company"
+      value={form.company || ""}
+      onChange={onChange}
+      autoComplete="off"
+    />
+  </label>
+</div>
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-slate-800">
                 Name
@@ -133,12 +196,16 @@ async function handleSubmit(e) {
             )}
 
             <button
-              type="submit"
-              disabled={status === "submitting"}
-              className="mt-1 inline-flex items-center justify-center rounded-full bg-brand-gradient px-5 py-2 text-sm font-medium text-white shadow-soft-glow hover:brightness-110 disabled:opacity-60"
-            >
-              {status === "submitting" ? "Sending..." : "Send message"}
-            </button>
+  type="submit"
+  disabled={status === "submitting" || isCooldown}
+  className="mt-1 inline-flex items-center justify-center rounded-full bg-brand-gradient px-5 py-2 text-sm font-medium text-white shadow-soft-glow hover:brightness-110 disabled:opacity-60"
+>
+  {status === "submitting"
+    ? "Sending..."
+    : isCooldown
+    ? `Please wait ${cooldownLeft}s`
+    : "Send message"}
+</button>
           </form>
 
           <div className="space-y-6 text-sm text-slate-600">
