@@ -1,37 +1,60 @@
 'use client'
 
 import { useState } from "react"
+import emailjs from "@emailjs/browser"
 
 export default function ContactPage() {
-  const [form, setForm] = useState({ name: "", email: "", message: "" })
+  const [form, setForm] = useState({
+  name: "",
+  email: "",
+  message: "",
+  company: "", // honeypot
+})
   const [status, setStatus] = useState("idle")
   const [error, setError] = useState("")
 
   async function handleSubmit(event) {
-    event.preventDefault()
-    setStatus("submitting")
-    setError("")
+  event.preventDefault()
 
-    try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(form),
-      })
-
-      if (!response.ok) {
-        throw new Error("Failed to submit form")
-      }
-
-      setStatus("submitted")
-      setForm({ name: "", email: "", message: "" })
-    } catch (err) {
-      setStatus("error")
-      setError("Something went wrong. Please try again.")
-    }
+   // honeypot check
+  if (form.company) {
+    return
   }
+
+  setStatus("submitting")
+  setError("")
+
+  try {
+
+    const lastSent = localStorage.getItem("dealora_contact_time")
+
+if (lastSent && Date.now() - Number(lastSent) < 60000) {
+  setStatus("idle")
+  setError("Please wait a minute before sending another message.")
+  return
+}
+
+localStorage.setItem("dealora_contact_time", Date.now())
+
+    await emailjs.send(
+      "service_yzb9zbj",
+      "template_5xi9xtq",
+      {
+        from_name: form.name,
+        from_email: form.email,
+        message: form.message,
+      },
+      "I8-Jdu1LER5RVglGT"
+    )
+
+    setStatus("submitted")
+    setForm({ name: "", email: "", message: "" })
+  } catch (err) {
+    console.error(err)
+    setStatus("error")
+    setError("Something went wrong. Please try again.")
+  }
+}
 
   function onChange(event) {
     const { name, value } = event.target
@@ -139,6 +162,16 @@ export default function ContactPage() {
             >
               {status === "submitting" ? "Sending..." : "Send message"}
             </button>
+
+            <input
+  type="text"
+  name="company"
+  value={form.company}
+  onChange={onChange}
+  style={{ display: "none" }}
+  tabIndex={-1}
+  autoComplete="off"
+/>
           </form>
 
           <div className="space-y-6 text-sm text-slate-600">
