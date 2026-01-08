@@ -4,53 +4,30 @@ import { useState } from "react"
 import emailjs from "@emailjs/browser"
 
 export default function ContactPage() {
-  const [form, setForm] = useState({
-  name: "",
-  email: "",
-  message: "",
-  company: "", // honeypot
-})
+  const [form, setForm] = useState({ name: "", email: "", message: "" })
   const [status, setStatus] = useState("idle")
   const [error, setError] = useState("")
 
-  async function handleSubmit(event) {
-  event.preventDefault()
-
-   // honeypot check
-  if (form.company) {
-    return
-  }
-
+async function handleSubmit(e) {
+  e.preventDefault()
   setStatus("submitting")
   setError("")
 
   try {
-
-    const lastSent = localStorage.getItem("dealora_contact_time")
-
-if (lastSent && Date.now() - Number(lastSent) < 60000) {
-  setStatus("idle")
-  setError("Please wait a minute before sending another message.")
-  return
-}
-
-localStorage.setItem("dealora_contact_time", Date.now())
-
-    await emailjs.send(
-      "service_yzb9zbj",
-      "template_5xi9xtq",
-      {
-        from_name: form.name,
-        from_email: form.email,
-        message: form.message,
+    await fetch("https://script.google.com/macros/s/AKfycbxmFDaa2Uvx1VUyhhb1383jLbTnrUiwz_siBZrL6e5Fd0A5WcvvyO1JCTKgMY2Nfhio/exec", {
+      method: "POST",
+      mode: "no-cors",
+      headers: {
+        "Content-Type": "application/json"
       },
-      "I8-Jdu1LER5RVglGT"
-    )
+      body: JSON.stringify(form)
+    })
 
+    // If fetch didn't throw, assume success
     setStatus("submitted")
     setForm({ name: "", email: "", message: "" })
+
   } catch (err) {
-    console.error(err)
     setStatus("error")
     setError("Something went wrong. Please try again.")
   }
@@ -162,16 +139,6 @@ localStorage.setItem("dealora_contact_time", Date.now())
             >
               {status === "submitting" ? "Sending..." : "Send message"}
             </button>
-
-            <input
-  type="text"
-  name="company"
-  value={form.company}
-  onChange={onChange}
-  style={{ display: "none" }}
-  tabIndex={-1}
-  autoComplete="off"
-/>
           </form>
 
           <div className="space-y-6 text-sm text-slate-600">
