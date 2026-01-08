@@ -149,7 +149,7 @@ export default function ContactPage() {
                 use the form or reach out via the support email below.
               </p>
               <p className="mt-2 text-sm text-brand-accent">
-                support@dealora.app
+                contact@dealora.co.in
               </p>
             </div>
 
