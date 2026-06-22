@@ -85,7 +85,7 @@ export default function RootLayout({ children }) {
               </div>
 
               <div className="mt-10 flex flex-col gap-3 border-t border-slate-200 pt-6 text-xs text-slate-500 sm:flex-row sm:items-center sm:justify-between">
-                <p>© {new Date().getFullYear()} Dealora. All rights reserved.</p>
+                <p>© {new Date().getFullYear()} Dealora. All rights reserved. Built by Nobenta Innovations Pvt Ltd</p>
                 <div className="flex flex-wrap items-center gap-4">
                   <Link href="/privacy-policy" className="hover:text-slate-900">
                     Privacy Policy
